@@ -1,0 +1,568 @@
+// ============================================================
+// PANA RABBIDS - Home Page Styles
+// BEM: .home-hero, .home-featured, .home-categories, etc.
+// ============================================================
+
+// ------------------------------------------------------------
+// HERO SECTION
+// ------------------------------------------------------------
+
+.home-hero {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: $color-primary;
+
+  @include tablet {
+    min-height: 90vh;
+  }
+
+  // Background image
+  &__bg {
+    @include absolute-fill;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Dark overlay gradient
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background: linear-gradient(
+        to right,
+        rgba($color-primary, 0.9) 0%,
+        rgba($color-primary, 0.6) 50%,
+        rgba($color-primary, 0.3) 100%
+      );
+
+      @include mobile-only {
+        background: linear-gradient(
+          to top,
+          rgba($color-primary, 0.95) 0%,
+          rgba($color-primary, 0.5) 100%
+        );
+      }
+    }
+  }
+
+  // Video background variant
+  &__video {
+    @include absolute-fill;
+    z-index: 0;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background: rgba($color-primary, 0.5);
+    }
+  }
+
+  // Content
+  &__content {
+    @include container;
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding-top: $space-20;
+    padding-bottom: $space-12;
+
+    @include tablet {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    font-family: $font-heading;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-secondary;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-ultra;
+    margin-bottom: $space-4;
+    animation: fadeInUp $transition-slow forwards;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 2px;
+      background-color: $color-secondary;
+      vertical-align: middle;
+      margin-right: $space-3;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-extrabold;
+    color: $color-accent;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-4;
+    animation: fadeInUp $transition-slow 100ms both;
+
+    @include tablet {
+      font-size: $font-size-5xl;
+    }
+
+    @include desktop {
+      font-size: $font-size-6xl;
+    }
+
+    // Gold accent word
+    span {
+      @include gradient-text;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    color: $gray-400;
+    line-height: $line-height-relaxed;
+    max-width: 480px;
+    margin-bottom: $space-8;
+    animation: fadeInUp $transition-slow 200ms both;
+
+    @include tablet {
+      font-size: $font-size-md;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+    animation: fadeInUp $transition-slow 300ms both;
+  }
+
+  // Scroll indicator
+  &__scroll {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    @include flex-column-center;
+    gap: $space-2;
+    color: $gray-500;
+    animation: float 3s ease-in-out infinite;
+
+    span {
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-widest;
+    }
+
+    &-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, $color-secondary, transparent);
+    }
+  }
+
+  // Hero slider dots
+  &__dots {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $space-2;
+    z-index: 2;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-circle;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &.is-active {
+      background-color: $color-secondary;
+      width: 24px;
+      border-radius: $radius-full;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// FEATURED PRODUCTS
+// ------------------------------------------------------------
+
+.home-featured {
+  @include section-padding;
+  background-color: $bg-light;
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    @include product-grid;
+  }
+
+  &__cta {
+    text-align: center;
+    margin-top: $space-10;
+  }
+}
+
+// ------------------------------------------------------------
+// CATEGORIES GRID
+// ------------------------------------------------------------
+
+.home-categories {
+  @include section-padding;
+  background-color: $bg-white;
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-4;
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-6;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.category-card {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: $aspect-square;
+  cursor: pointer;
+
+  @include tablet {
+    aspect-ratio: 4 / 5;
+  }
+
+  &__image {
+    @include absolute-fill;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+
+    .category-card:hover & img {
+      transform: scale(1.08);
+    }
+  }
+
+  &__overlay {
+    @include absolute-fill;
+    background: linear-gradient(
+      to top,
+      rgba($color-primary, 0.8) 0%,
+      rgba($color-primary, 0.2) 60%,
+      transparent 100%
+    );
+    z-index: 1;
+    transition: background $transition-base;
+
+    .category-card:hover & {
+      background: linear-gradient(
+        to top,
+        rgba($color-primary, 0.9) 0%,
+        rgba($color-primary, 0.4) 60%,
+        rgba($color-primary, 0.1) 100%
+      );
+    }
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: $space-4;
+    z-index: 2;
+
+    @include tablet {
+      padding: $space-5;
+    }
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-1;
+
+    @include tablet {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__count {
+    font-size: $font-size-xs;
+    color: $gray-400;
+  }
+
+  &__arrow {
+    position: absolute;
+    bottom: $space-4;
+    right: $space-4;
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $radius-circle;
+    z-index: 2;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all $transition-base;
+
+    .category-card:hover & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+// Featured large category (2x2 grid item)
+.category-card--featured {
+  @include tablet {
+    grid-column: span 2;
+    grid-row: span 2;
+
+    .category-card__name {
+      font-size: $font-size-2xl;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// TRUST BADGES / FEATURES
+// ------------------------------------------------------------
+
+.home-trust {
+  @include section-padding;
+  background-color: $color-primary;
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-6;
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.trust-badge {
+  @include flex-column-center;
+  text-align: center;
+  padding: $space-6 $space-4;
+
+  &__icon {
+    @include flex-center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: $space-4;
+    color: $color-secondary;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-1;
+  }
+
+  &__text {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// ------------------------------------------------------------
+// NEWSLETTER SECTION (Standalone)
+// ------------------------------------------------------------
+
+.home-newsletter {
+  @include section-padding;
+  background-color: $bg-dark;
+  position: relative;
+  overflow: hidden;
+
+  // Decorative background pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: $radius-circle;
+    background: radial-gradient(circle, rgba($color-secondary, 0.05), transparent 70%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    @include container;
+    @include flex-column-center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-3;
+
+    @include tablet {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__text {
+    font-size: $font-size-base;
+    color: $gray-400;
+    max-width: 480px;
+    margin-bottom: $space-8;
+    line-height: $line-height-relaxed;
+  }
+
+  &__form {
+    display: flex;
+    gap: $space-3;
+    width: 100%;
+    max-width: 480px;
+    flex-direction: column;
+
+    @include mobile {
+      flex-direction: row;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: $space-3 $space-5;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-full;
+    color: $color-accent;
+    font-size: $font-size-base;
+
+    &::placeholder {
+      color: $gray-500;
+    }
+
+    &:focus {
+      border-color: $color-secondary;
+      outline: none;
+    }
+  }
+
+  &__btn {
+    @include button-base;
+    padding: $space-3 $space-8;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $radius-full;
+    font-size: $font-size-sm;
+
+    &:hover {
+      background-color: $gold-dark;
+      box-shadow: $shadow-gold;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// MARQUEE / BRANDS TICKER
+// ------------------------------------------------------------
+
+.home-brands {
+  padding: $space-8 0;
+  background-color: $bg-white;
+  border-top: 1px solid $gray-100;
+  border-bottom: 1px solid $gray-100;
+  overflow: hidden;
+
+  &__track {
+    display: flex;
+    gap: $space-12;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    img {
+      height: 32px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all $transition-base;
+
+      &:hover {
+        filter: none;
+        opacity: 1;
+      }
+    }
+  }
+}

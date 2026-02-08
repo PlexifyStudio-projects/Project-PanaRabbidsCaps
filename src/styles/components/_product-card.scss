@@ -1,0 +1,533 @@
+// ============================================================
+// PANA RABBIDS - Product Card Component
+// BEM: .product-card, .product-card__image, etc.
+// Premium streetwear product display
+// ============================================================
+
+.product-card {
+  position: relative;
+  background-color: $bg-white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: transform $transition-base, box-shadow $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+
+  // ------------------------------------------------------------
+  // IMAGE SECTION
+  // ------------------------------------------------------------
+
+  &__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: $aspect-product;
+    background-color: $gray-100;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+
+    // Hover zoom
+    .product-card:hover & {
+      transform: scale(1.08);
+    }
+  }
+
+  // Secondary image on hover
+  &__image--hover {
+    @include absolute-fill;
+    opacity: 0;
+    object-fit: cover;
+    transition: opacity $transition-base;
+
+    .product-card:hover & {
+      opacity: 1;
+    }
+  }
+
+  // Sold out overlay
+  &__soldout-overlay {
+    @include absolute-fill;
+    @include flex-center;
+    background: rgba($color-primary, 0.5);
+    z-index: 2;
+
+    span {
+      @include badge($gray-700, $bg-white);
+      font-size: $font-size-sm;
+      padding: $space-2 $space-4;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // QUICK VIEW OVERLAY
+  // ------------------------------------------------------------
+
+  &__quick-view {
+    @include absolute-fill;
+    @include flex-center;
+    background: rgba($color-primary, 0);
+    z-index: 3;
+    opacity: 0;
+    transition: all $transition-base;
+
+    .product-card:hover & {
+      background: rgba($color-primary, 0.35);
+      opacity: 1;
+    }
+  }
+
+  &__quick-view-btn {
+    @include button-base;
+    background-color: $bg-white;
+    color: $color-primary;
+    padding: $space-2 $space-5;
+    font-size: $font-size-xs;
+    border-radius: $radius-full;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all $transition-base;
+
+    .product-card:hover & {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-primary;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // BADGES (Corner badges)
+  // ------------------------------------------------------------
+
+  &__badge {
+    position: absolute;
+    top: $space-3;
+    left: $space-3;
+    z-index: 4;
+    @include badge;
+    animation: popIn 300ms ease forwards;
+
+    &--nuevo {
+      background-color: $color-secondary;
+      color: $color-primary;
+    }
+
+    &--oferta {
+      background-color: $color-error;
+      color: $bg-white;
+    }
+
+    &--agotado {
+      background-color: $gray-700;
+      color: $bg-white;
+    }
+
+    &--exclusivo {
+      @include gradient-gold;
+      color: $color-primary;
+    }
+
+    &--limited {
+      background-color: $bg-dark;
+      color: $color-secondary;
+      border: 1px solid $color-secondary;
+    }
+  }
+
+  // Discount percentage badge
+  &__discount {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    z-index: 4;
+    @include badge($color-error, $bg-white);
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+  }
+
+  // ------------------------------------------------------------
+  // WISHLIST BUTTON
+  // ------------------------------------------------------------
+
+  &__wishlist {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    z-index: 5;
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    background: $bg-white;
+    border: none;
+    border-radius: $radius-circle;
+    cursor: pointer;
+    box-shadow: $shadow-sm;
+    transition: all $transition-base;
+    opacity: 0;
+    transform: scale(0.8);
+
+    .product-card:hover & {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $gray-500;
+      transition: color $transition-fast;
+    }
+
+    &:hover {
+      transform: scale(1.1) !important;
+
+      svg {
+        color: $color-error;
+      }
+    }
+
+    // Active/wishlisted state
+    &.is-active {
+      opacity: 1;
+      transform: scale(1);
+
+      svg {
+        color: $color-error;
+        fill: $color-error;
+      }
+    }
+  }
+
+  // When there's a badge on top-right, move wishlist
+  &__badge + &__wishlist,
+  &__discount ~ &__wishlist {
+    top: auto;
+    bottom: $space-3;
+  }
+
+  // ------------------------------------------------------------
+  // PRODUCT INFO
+  // ------------------------------------------------------------
+
+  &__info {
+    padding: $space-3 $space-4 $space-4;
+  }
+
+  &__category {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-1;
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    color: $color-primary;
+    @include truncate(2);
+    margin-bottom: $space-2;
+    line-height: $line-height-snug;
+
+    @include tablet {
+      font-size: $font-size-md;
+    }
+
+    .product-card:hover & {
+      color: $color-secondary;
+    }
+  }
+
+  &__name-link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // PRICING
+  // ------------------------------------------------------------
+
+  &__pricing {
+    @include flex-start;
+    gap: $space-2;
+    align-items: baseline;
+    margin-bottom: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__price {
+    font-family: $font-mono;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+    letter-spacing: $letter-spacing-tight;
+
+    @include tablet {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__price--sale {
+    color: $color-error;
+  }
+
+  &__compare-price {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    color: $gray-400;
+    text-decoration: line-through;
+  }
+
+  &__price-savings {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-success;
+  }
+
+  // ------------------------------------------------------------
+  // VARIANTS PREVIEW (color dots)
+  // ------------------------------------------------------------
+
+  &__variants {
+    display: flex;
+    gap: $space-1;
+    margin-bottom: $space-2;
+  }
+
+  &__variant-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: $radius-circle;
+    border: 1.5px solid $gray-200;
+    cursor: pointer;
+    transition: border-color $transition-fast, transform $transition-fast;
+
+    &:hover,
+    &.is-active {
+      border-color: $color-primary;
+      transform: scale(1.2);
+    }
+  }
+
+  &__variant-count {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    line-height: 14px;
+    margin-left: $space-1;
+  }
+
+  // ------------------------------------------------------------
+  // STOCK BADGE
+  // ------------------------------------------------------------
+
+  &__stock {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    margin-bottom: $space-3;
+
+    &--low {
+      color: $color-warning;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: $radius-circle;
+        background-color: $color-warning;
+        animation: pulse 2s ease-in-out infinite;
+      }
+    }
+
+    &--out {
+      color: $gray-400;
+    }
+
+    &--in {
+      color: $color-success;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: $radius-circle;
+        background-color: $color-success;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // ADD TO CART (inline)
+  // ------------------------------------------------------------
+
+  &__add-to-cart {
+    @include button-base;
+    width: 100%;
+    padding: $space-2 $space-4;
+    font-size: $font-size-xs;
+    min-height: 40px;
+    background-color: $color-primary;
+    color: $color-accent;
+    border-radius: $radius-base;
+
+    &:hover:not(:disabled) {
+      background-color: $color-secondary;
+      color: $color-primary;
+    }
+
+    &:disabled {
+      background-color: $gray-200;
+      color: $gray-400;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-right: $space-2;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // RATING
+  // ------------------------------------------------------------
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-bottom: $space-2;
+
+    &-stars {
+      display: flex;
+      gap: 1px;
+      color: $color-secondary;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &-count {
+      font-size: $font-size-xs;
+      color: $gray-500;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // CARD VARIANTS
+  // ------------------------------------------------------------
+
+  // Dark variant
+  &--dark {
+    background-color: $bg-dark;
+
+    .product-card__name {
+      color: $color-accent;
+
+      .product-card:hover & {
+        color: $color-secondary;
+      }
+    }
+
+    .product-card__price {
+      color: $color-accent;
+    }
+
+    .product-card__category {
+      color: $gray-400;
+    }
+  }
+
+  // Compact variant (list view)
+  &--compact {
+    display: flex;
+    flex-direction: row;
+    border-radius: $radius-base;
+
+    .product-card__image-wrapper {
+      width: 120px;
+      min-width: 120px;
+      aspect-ratio: $aspect-square;
+
+      @include tablet {
+        width: 160px;
+        min-width: 160px;
+      }
+    }
+
+    .product-card__info {
+      flex: 1;
+      @include flex-column;
+      justify-content: center;
+    }
+
+    .product-card__name {
+      font-size: $font-size-sm;
+    }
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  // Featured variant (larger)
+  &--featured {
+    .product-card__image-wrapper {
+      aspect-ratio: $aspect-square;
+    }
+
+    .product-card__name {
+      font-size: $font-size-lg;
+    }
+
+    .product-card__price {
+      font-size: $font-size-xl;
+    }
+  }
+
+  // Skeleton loading
+  &--skeleton {
+    pointer-events: none;
+
+    .product-card__image-wrapper {
+      @include shimmer;
+    }
+
+    .product-card__info {
+      .skeleton-line {
+        height: 14px;
+        border-radius: $radius-sm;
+        margin-bottom: $space-2;
+        @include shimmer;
+
+        &:nth-child(1) { width: 40%; }
+        &:nth-child(2) { width: 80%; }
+        &:nth-child(3) { width: 50%; }
+      }
+    }
+  }
+}

@@ -1,0 +1,378 @@
+// ============================================================
+// PANA RABBIDS - Button Component
+// BEM: .btn, .btn--primary, .btn--sm, etc.
+// ============================================================
+
+// ------------------------------------------------------------
+// BASE BUTTON
+// ------------------------------------------------------------
+
+.btn {
+  @include button-base;
+  padding: $space-3 $space-6;
+  font-size: $font-size-sm;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+
+  // Ripple effect container
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: $radius-circle;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  // ------------------------------------------------------------
+  // VARIANTS
+  // ------------------------------------------------------------
+
+  // Primary - Gold (main CTA)
+  &--primary {
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-color: $color-secondary;
+
+    &:hover:not(:disabled) {
+      background-color: $gold-dark;
+      border-color: $gold-dark;
+      box-shadow: $shadow-gold;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gold-darker;
+      border-color: $gold-darker;
+      transform: translateY(1px);
+    }
+  }
+
+  // Secondary - Outline
+  &--secondary {
+    background-color: transparent;
+    color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary;
+      color: $color-accent;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-900;
+      transform: translateY(1px);
+    }
+  }
+
+  // Ghost - Minimal
+  &--ghost {
+    background-color: transparent;
+    color: $color-primary;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-200;
+    }
+  }
+
+  // Danger
+  &--danger {
+    background-color: $color-error;
+    color: $bg-white;
+    border-color: $color-error;
+
+    &:hover:not(:disabled) {
+      background-color: darken($color-error, 8%);
+      border-color: darken($color-error, 8%);
+      box-shadow: 0 4px 14px rgba($color-error, 0.3);
+    }
+
+    &:active:not(:disabled) {
+      background-color: darken($color-error, 12%);
+      transform: translateY(1px);
+    }
+  }
+
+  // White - For dark backgrounds
+  &--white {
+    background-color: $bg-white;
+    color: $color-primary;
+    border-color: $bg-white;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+      border-color: $gray-100;
+    }
+  }
+
+  // Outline Gold
+  &--outline-gold {
+    background-color: transparent;
+    color: $color-secondary;
+    border-color: $color-secondary;
+
+    &:hover:not(:disabled) {
+      background-color: $color-secondary;
+      color: $color-primary;
+      box-shadow: $shadow-gold;
+    }
+  }
+
+  // Dark variant for light backgrounds
+  &--dark {
+    background-color: $color-primary;
+    color: $color-accent;
+    border-color: $color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-800;
+      border-color: $gray-800;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SIZES
+  // ------------------------------------------------------------
+
+  &--sm {
+    padding: $space-2 $space-4;
+    font-size: $font-size-xs;
+    min-height: 36px;
+  }
+
+  &--md {
+    padding: $space-3 $space-6;
+    font-size: $font-size-sm;
+    min-height: 44px;
+  }
+
+  &--lg {
+    padding: $space-4 $space-8;
+    font-size: $font-size-base;
+    min-height: 52px;
+
+    @include tablet {
+      padding: $space-4 $space-10;
+      font-size: $font-size-md;
+      min-height: 56px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // STATES
+  // ------------------------------------------------------------
+
+  // Loading state
+  &--loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: currentColor;
+      border-radius: $radius-circle;
+      animation: spin 0.6s linear infinite;
+    }
+
+    // Adjust spinner color for light-bg variants
+    &.btn--secondary::after,
+    &.btn--ghost::after,
+    &.btn--white::after {
+      border-color: rgba(0, 0, 0, 0.15);
+      border-top-color: $color-primary;
+    }
+
+    &.btn--primary::after {
+      border-color: rgba(0, 0, 0, 0.15);
+      border-top-color: $color-primary;
+    }
+  }
+
+  // Disabled
+  &:disabled,
+  &--disabled {
+    opacity: $opacity-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // ------------------------------------------------------------
+  // MODIFIERS
+  // ------------------------------------------------------------
+
+  // Full width
+  &--full {
+    width: 100%;
+  }
+
+  // Pill shape
+  &--pill {
+    border-radius: $radius-full;
+  }
+
+  // Icon only button
+  &--icon {
+    padding: $space-3;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: $radius-base;
+
+    &.btn--sm {
+      padding: $space-2;
+      min-width: 36px;
+      min-height: 36px;
+    }
+
+    &.btn--lg {
+      padding: $space-4;
+      min-width: 52px;
+      min-height: 52px;
+    }
+
+    // Circle icon button
+    &-circle {
+      padding: $space-3;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: $radius-circle;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // ICON INSIDE BUTTON
+  // ------------------------------------------------------------
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__icon--left {
+    margin-right: $space-1;
+  }
+
+  &__icon--right {
+    margin-left: $space-1;
+  }
+}
+
+// ------------------------------------------------------------
+// BUTTON GROUP
+// ------------------------------------------------------------
+
+.btn-group {
+  display: inline-flex;
+  gap: 0;
+
+  .btn {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: $radius-base 0 0 $radius-base;
+    }
+
+    &:last-child {
+      border-radius: 0 $radius-base $radius-base 0;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// Spaced button row
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+}
+
+// ------------------------------------------------------------
+// ADD TO CART BUTTON (Special variant)
+// ------------------------------------------------------------
+
+.btn-add-to-cart {
+  @extend .btn;
+  @extend .btn--primary;
+  @extend .btn--full;
+  font-size: $font-size-sm;
+  min-height: 48px;
+  position: relative;
+  overflow: hidden;
+
+  // Success state after adding
+  &--success {
+    background-color: $color-success;
+    border-color: $color-success;
+
+    &:hover:not(:disabled) {
+      background-color: $color-success;
+      border-color: $color-success;
+    }
+  }
+}
+
+// Floating action button (mobile)
+.btn-fab {
+  @include flex-center;
+  position: fixed;
+  bottom: $space-6;
+  right: $space-4;
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-circle;
+  background-color: $color-secondary;
+  color: $color-primary;
+  box-shadow: $shadow-lg;
+  z-index: $z-sticky;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: $shadow-gold-lg;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}

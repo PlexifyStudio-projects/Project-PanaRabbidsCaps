@@ -1,0 +1,633 @@
+// ============================================================
+// PANA RABBIDS - Header / Navigation
+// BEM: .header, .header__logo, .header__nav, etc.
+// Fixed top with backdrop blur
+// ============================================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height-mobile;
+  z-index: $z-header;
+  transition: all $transition-base;
+
+  @include tablet {
+    height: $header-height;
+  }
+
+  // Backdrop blur background
+  &::before {
+    content: '';
+    @include absolute-fill;
+    background: rgba($color-primary, 0.92);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    z-index: -1;
+  }
+
+  // Scrolled state (more solid)
+  &.is-scrolled {
+    box-shadow: 0 1px 0 rgba($color-secondary, 0.1);
+
+    &::before {
+      background: rgba($color-primary, 0.97);
+    }
+  }
+
+  // Hidden on scroll down
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  // ------------------------------------------------------------
+  // INNER CONTAINER
+  // ------------------------------------------------------------
+
+  &__inner {
+    @include container;
+    @include flex-between;
+    height: 100%;
+    gap: $space-4;
+  }
+
+  // ------------------------------------------------------------
+  // LOGO
+  // ------------------------------------------------------------
+
+  &__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+    }
+
+    img {
+      height: 32px;
+      width: auto;
+
+      @include tablet {
+        height: 40px;
+      }
+    }
+
+    &-text {
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-extrabold;
+      color: $color-accent;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-wider;
+      line-height: 1;
+
+      @include tablet {
+        font-size: $font-size-xl;
+      }
+
+      span {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // MAIN NAVIGATION
+  // ------------------------------------------------------------
+
+  &__nav {
+    display: none;
+    align-items: center;
+    gap: $space-1;
+    flex: 1;
+    justify-content: center;
+
+    @include desktop {
+      display: flex;
+    }
+  }
+
+  &__nav-item {
+    position: relative;
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    padding: $space-2 $space-3;
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $gray-300;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    border-radius: $radius-base;
+    transition: color $transition-fast, background-color $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-accent;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &.is-active {
+      color: $color-secondary;
+    }
+
+    // Dropdown arrow
+    svg {
+      width: 12px;
+      height: 12px;
+      transition: transform $transition-fast;
+    }
+  }
+
+  // Active indicator
+  &__nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: $space-3;
+    right: $space-3;
+    height: 2px;
+    background-color: $color-secondary;
+    border-radius: $radius-full;
+  }
+
+  // ------------------------------------------------------------
+  // MEGA MENU DROPDOWN
+  // ------------------------------------------------------------
+
+  &__mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 600px;
+    background-color: $bg-white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-xl;
+    padding: $space-6;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-base;
+    z-index: $z-dropdown;
+
+    .header__nav-item:hover & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    // Arrow
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background-color: $bg-white;
+      border-radius: 2px;
+    }
+  }
+
+  &__mega-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-6;
+  }
+
+  &__mega-menu-title {
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $color-primary;
+    margin-bottom: $space-3;
+    padding-bottom: $space-2;
+    border-bottom: 2px solid $color-secondary;
+    display: inline-block;
+  }
+
+  &__mega-menu-links {
+    @include flex-column;
+    gap: $space-2;
+
+    a {
+      font-size: $font-size-sm;
+      color: $gray-600;
+      transition: color $transition-fast;
+      padding: $space-1 0;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__mega-menu-featured {
+    background-color: $gray-50;
+    border-radius: $radius-base;
+    padding: $space-4;
+    text-align: center;
+
+    img {
+      width: 100%;
+      border-radius: $radius-base;
+      margin-bottom: $space-3;
+    }
+  }
+
+  // Simple dropdown (non-mega)
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: $bg-white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    padding: $space-2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all $transition-base;
+    z-index: $z-dropdown;
+
+    .header__nav-item:hover & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: $space-2 $space-3;
+    font-size: $font-size-sm;
+    color: $gray-600;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $gray-50;
+      color: $color-primary;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SEARCH BAR
+  // ------------------------------------------------------------
+
+  &__search {
+    position: relative;
+    display: none;
+    max-width: 280px;
+    flex: 1;
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__search-input {
+    width: 100%;
+    padding: $space-2 $space-4;
+    padding-left: $space-10;
+    font-size: $font-size-sm;
+    color: $color-accent;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-full;
+    transition: all $transition-base;
+
+    &::placeholder {
+      color: $gray-500;
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: $color-secondary;
+      box-shadow: 0 0 0 3px rgba($color-secondary, 0.1);
+      outline: none;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: $gray-400;
+    pointer-events: none;
+  }
+
+  // Predictive search results
+  &__search-results {
+    position: absolute;
+    top: calc(100% + #{$space-2});
+    left: 0;
+    right: 0;
+    background: $bg-white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-xl;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: $z-dropdown;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: all $transition-fast;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__search-result-item {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3 $space-4;
+    transition: background-color $transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $gray-50;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__search-result-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+  }
+
+  &__search-result-price {
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+
+  // ------------------------------------------------------------
+  // ACTIONS (Cart, Account, etc.)
+  // ------------------------------------------------------------
+
+  &__actions {
+    @include flex-end;
+    gap: $space-2;
+    flex-shrink: 0;
+
+    @include tablet {
+      gap: $space-3;
+    }
+  }
+
+  &__action-btn {
+    @include flex-center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    color: $gray-300;
+    border-radius: $radius-circle;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-accent;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  // Cart badge count
+  &__cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 $space-1;
+    background-color: $color-secondary;
+    color: $color-primary;
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-full;
+    @include flex-center;
+    line-height: 1;
+    animation: popIn 300ms ease forwards;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // Mobile search toggle
+  &__search-toggle {
+    @extend .header__action-btn;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // MOBILE HAMBURGER
+  // ------------------------------------------------------------
+
+  &__hamburger {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    color: $gray-300;
+    border-radius: $radius-circle;
+    transition: color $transition-fast;
+
+    @include desktop {
+      display: none;
+    }
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // MOBILE MENU
+  // ------------------------------------------------------------
+
+  &__mobile-menu {
+    @include fixed-fill;
+    top: $header-height-mobile;
+    background-color: $color-primary;
+    z-index: $z-sidebar;
+    transform: translateX(-100%);
+    transition: transform $transition-slow;
+    overflow-y: auto;
+    @include custom-scrollbar(4px, $gray-700, transparent);
+
+    @include tablet {
+      top: $header-height;
+    }
+
+    &.is-active {
+      transform: translateX(0);
+    }
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__mobile-nav {
+    padding: $space-4;
+  }
+
+  &__mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-4 $space-2;
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $gray-300;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color $transition-fast;
+
+    &:hover,
+    &.is-active {
+      color: $color-secondary;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__mobile-submenu {
+    padding-left: $space-4;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-slow;
+
+    &.is-open {
+      max-height: 500px;
+    }
+  }
+
+  &__mobile-submenu-link {
+    display: block;
+    padding: $space-3 $space-2;
+    font-size: $font-size-base;
+    color: $gray-400;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  // Mobile search
+  &__mobile-search {
+    padding: $space-4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    input {
+      width: 100%;
+      padding: $space-3 $space-4;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: $radius-full;
+      color: $color-accent;
+      font-size: $font-size-base;
+
+      &::placeholder {
+        color: $gray-500;
+      }
+
+      &:focus {
+        border-color: $color-secondary;
+        outline: none;
+      }
+    }
+  }
+}
+
+// Spacer to offset fixed header
+.header-spacer {
+  height: $header-height-mobile;
+
+  @include tablet {
+    height: $header-height;
+  }
+}
+
+// Announcement bar (above header)
+.announcement-bar {
+  background-color: $color-secondary;
+  color: $color-primary;
+  text-align: center;
+  padding: $space-2 $space-4;
+  font-family: $font-heading;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  position: relative;
+  z-index: $z-header + 1;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // When announcement bar exists, shift header down
+  & + .header {
+    top: 32px;
+  }
+
+  & + .header + .header-spacer {
+    height: calc(#{$header-height-mobile} + 32px);
+
+    @include tablet {
+      height: calc(#{$header-height} + 32px);
+    }
+  }
+}

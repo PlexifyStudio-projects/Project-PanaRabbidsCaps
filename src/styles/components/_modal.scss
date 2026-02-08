@@ -1,0 +1,351 @@
+// ============================================================
+// PANA RABBIDS - Modal Component
+// BEM: .modal, .modal__overlay, .modal__container, etc.
+// ============================================================
+
+// ------------------------------------------------------------
+// OVERLAY / BACKDROP
+// ------------------------------------------------------------
+
+.modal {
+  @include fixed-fill;
+  z-index: $z-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+
+  // Hidden by default
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear $transition-base,
+              opacity $transition-base;
+
+  // Active state
+  &.is-active,
+  &--active {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+
+    .modal__container {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // BACKDROP
+  // ------------------------------------------------------------
+
+  &__overlay {
+    @include absolute-fill;
+    background: rgba($color-primary, $opacity-backdrop);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+  }
+
+  // ------------------------------------------------------------
+  // CONTAINER
+  // ------------------------------------------------------------
+
+  &__container {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    background-color: $bg-white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    z-index: $z-above;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    // Enter animation
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: transform $transition-slow, opacity $transition-slow;
+  }
+
+  // ------------------------------------------------------------
+  // HEADER
+  // ------------------------------------------------------------
+
+  &__header {
+    @include flex-between;
+    padding: $space-5 $space-6;
+    border-bottom: 1px solid $gray-100;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    margin: 0;
+  }
+
+  // ------------------------------------------------------------
+  // CLOSE BUTTON
+  // ------------------------------------------------------------
+
+  &__close {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-circle;
+    background: transparent;
+    color: $gray-500;
+    border: none;
+    cursor: pointer;
+    transition: all $transition-fast;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: $gray-100;
+      color: $color-primary;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // BODY
+  // ------------------------------------------------------------
+
+  &__body {
+    padding: $space-6;
+    overflow-y: auto;
+    flex: 1;
+    @include custom-scrollbar;
+  }
+
+  // ------------------------------------------------------------
+  // FOOTER
+  // ------------------------------------------------------------
+
+  &__footer {
+    @include flex-end;
+    gap: $space-3;
+    padding: $space-4 $space-6;
+    border-top: 1px solid $gray-100;
+    flex-shrink: 0;
+
+    &--between {
+      justify-content: space-between;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--stacked {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SIZE VARIANTS
+  // ------------------------------------------------------------
+
+  // Small modal
+  &--sm {
+    .modal__container {
+      max-width: 400px;
+    }
+  }
+
+  // Large modal
+  &--lg {
+    .modal__container {
+      max-width: 720px;
+    }
+  }
+
+  // Extra large / full-like modal
+  &--xl {
+    .modal__container {
+      max-width: 960px;
+    }
+  }
+
+  // Fullscreen modal
+  &--fullscreen {
+    padding: 0;
+
+    .modal__container {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+
+  // Full on mobile, centered on desktop
+  &--mobile-full {
+    padding: 0;
+
+    .modal__container {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      transform: translateY(100%);
+    }
+
+    &.is-active .modal__container {
+      transform: translateY(0);
+    }
+
+    @include tablet {
+      padding: $space-4;
+
+      .modal__container {
+        max-width: 540px;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        border-radius: $radius-lg;
+        transform: scale(0.95) translateY(20px);
+      }
+
+      &.is-active .modal__container {
+        transform: scale(1) translateY(0);
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // DARK VARIANT
+  // ------------------------------------------------------------
+
+  &--dark {
+    .modal__container {
+      background-color: $bg-dark;
+      color: $color-accent;
+    }
+
+    .modal__header {
+      border-bottom-color: $gray-800;
+    }
+
+    .modal__footer {
+      border-top-color: $gray-800;
+    }
+
+    .modal__close:hover {
+      background-color: $gray-800;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SLIDE ANIMATION VARIANTS
+  // ------------------------------------------------------------
+
+  // Slide up
+  &--slide-up {
+    align-items: flex-end;
+
+    .modal__container {
+      transform: translateY(100%);
+      opacity: 1;
+      border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    &.is-active .modal__container {
+      transform: translateY(0);
+    }
+  }
+
+  // Slide from right (sheet style)
+  &--slide-right {
+    justify-content: flex-end;
+    padding: 0;
+
+    .modal__container {
+      transform: translateX(100%);
+      opacity: 1;
+      max-width: 480px;
+      height: 100%;
+      max-height: 100%;
+      border-radius: $radius-lg 0 0 $radius-lg;
+    }
+
+    &.is-active .modal__container {
+      transform: translateX(0);
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// CONFIRMATION MODAL
+// ------------------------------------------------------------
+
+.modal-confirm {
+  text-align: center;
+
+  &__icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-circle;
+    margin: 0 auto $space-4;
+
+    &--warning {
+      background-color: $color-warning-light;
+      color: $color-warning;
+    }
+
+    &--danger {
+      background-color: $color-error-light;
+      color: $color-error;
+    }
+
+    &--success {
+      background-color: $color-success-light;
+      color: $color-success;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    margin-bottom: $space-2;
+  }
+
+  &__message {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-6;
+  }
+}
+
+// ------------------------------------------------------------
+// BODY SCROLL LOCK
+// ------------------------------------------------------------
+
+body.modal-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width, 0);
+}

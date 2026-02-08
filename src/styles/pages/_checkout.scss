@@ -1,0 +1,612 @@
+// ============================================================
+// PANA RABBIDS - Checkout Page
+// BEM: .checkout
+// Two-column: form + order summary
+// ============================================================
+
+.checkout {
+  @include section-padding;
+  background-color: $bg-light;
+
+  &__inner {
+    @include container;
+    max-width: $container-xl;
+  }
+
+  // Page title
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    text-align: center;
+    margin-bottom: $space-8;
+
+    @include tablet {
+      font-size: $font-size-3xl;
+      margin-bottom: $space-10;
+    }
+  }
+
+  // Steps indicator
+  &__steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    margin-bottom: $space-10;
+
+    @include tablet {
+      gap: $space-4;
+    }
+  }
+
+  &__step {
+    @include flex-center;
+    gap: $space-2;
+    font-family: $font-heading;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $gray-400;
+
+    @include tablet {
+      font-size: $font-size-sm;
+    }
+
+    &-number {
+      @include flex-center;
+      width: 28px;
+      height: 28px;
+      border-radius: $radius-circle;
+      border: 2px solid $gray-300;
+      font-family: $font-mono;
+      font-size: $font-size-xs;
+      flex-shrink: 0;
+    }
+
+    &-label {
+      display: none;
+
+      @include tablet {
+        display: inline;
+      }
+    }
+
+    &.is-active {
+      color: $color-primary;
+
+      .checkout__step-number {
+        background-color: $color-secondary;
+        border-color: $color-secondary;
+        color: $color-primary;
+      }
+    }
+
+    &.is-completed {
+      color: $color-success;
+
+      .checkout__step-number {
+        background-color: $color-success;
+        border-color: $color-success;
+        color: $bg-white;
+      }
+    }
+  }
+
+  &__step-divider {
+    width: 40px;
+    height: 2px;
+    background-color: $gray-200;
+    flex-shrink: 0;
+
+    @include tablet {
+      width: 60px;
+    }
+
+    &.is-completed {
+      background-color: $color-success;
+    }
+  }
+
+  // Two-column layout
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include desktop {
+      grid-template-columns: 1fr 400px;
+      gap: $space-10;
+    }
+
+    @include wide {
+      grid-template-columns: 1fr 440px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // FORM SECTION
+  // ------------------------------------------------------------
+
+  &__form-area {
+    // Main form column
+  }
+
+  &__section {
+    background-color: $bg-white;
+    border-radius: $radius-md;
+    padding: $space-6;
+    margin-bottom: $space-6;
+    box-shadow: $shadow-xs;
+
+    @include tablet {
+      padding: $space-8;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-header {
+    @include flex-between;
+    margin-bottom: $space-6;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  &__section-title {
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+  }
+
+  &__section-number {
+    @include flex-center;
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-circle;
+    background-color: $color-primary;
+    color: $color-accent;
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    flex-shrink: 0;
+    margin-right: $space-3;
+  }
+
+  // Form grid
+  &__form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-4;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__form-full {
+    @include mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // Form group
+  &__form-group {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+    margin-bottom: $space-2;
+
+    .required {
+      color: $color-error;
+    }
+  }
+
+  &__input {
+    @include input-base;
+  }
+
+  &__select {
+    @include input-base;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23737373'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $space-4 center;
+    padding-right: $space-10;
+  }
+
+  &__textarea {
+    @include input-base;
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  &__error-msg {
+    font-size: $font-size-xs;
+    color: $color-error;
+    margin-top: $space-1;
+  }
+
+  &__help-text {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    margin-top: $space-1;
+  }
+
+  // Checkbox / Radio
+  &__checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    cursor: pointer;
+
+    input {
+      width: 18px;
+      height: 18px;
+      accent-color: $color-secondary;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    span {
+      font-size: $font-size-sm;
+      color: $gray-600;
+      line-height: $line-height-normal;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SHIPPING OPTIONS
+  // ------------------------------------------------------------
+
+  &__shipping-options {
+    @include flex-column;
+    gap: $space-3;
+  }
+
+  &__shipping-option {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-4;
+    border: $border-width-2 solid $gray-200;
+    border-radius: $radius-base;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: $gray-300;
+    }
+
+    &.is-selected {
+      border-color: $color-secondary;
+      background-color: rgba($color-secondary, 0.03);
+    }
+
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $color-secondary;
+      flex-shrink: 0;
+    }
+  }
+
+  &__shipping-option-info {
+    flex: 1;
+  }
+
+  &__shipping-option-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $space-1;
+  }
+
+  &__shipping-option-desc {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+
+  &__shipping-option-price {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    flex-shrink: 0;
+
+    &--free {
+      color: $color-success;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // PAYMENT SECTION
+  // ------------------------------------------------------------
+
+  &__payment-methods {
+    @include flex-column;
+    gap: $space-3;
+  }
+
+  &__payment-method {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4;
+    border: $border-width-2 solid $gray-200;
+    border-radius: $radius-base;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: $gray-300;
+    }
+
+    &.is-selected {
+      border-color: $color-secondary;
+      background-color: rgba($color-secondary, 0.03);
+    }
+
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $color-secondary;
+      flex-shrink: 0;
+    }
+  }
+
+  &__payment-method-icon {
+    width: 40px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  &__payment-method-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    flex: 1;
+  }
+
+  // Card input fields
+  &__card-fields {
+    padding: $space-4;
+    background-color: $gray-50;
+    border-radius: $radius-base;
+    margin-top: $space-4;
+  }
+
+  // Secure badge
+  &__secure-badge {
+    @include flex-center;
+    gap: $space-2;
+    padding: $space-3;
+    background-color: $color-success-light;
+    border-radius: $radius-base;
+    margin-top: $space-4;
+    font-size: $font-size-xs;
+    color: $color-success;
+    font-weight: $font-weight-medium;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // ORDER SUMMARY SIDEBAR
+  // ------------------------------------------------------------
+
+  &__summary {
+    @include desktop {
+      position: sticky;
+      top: calc(#{$header-height} + #{$space-4});
+      align-self: start;
+    }
+  }
+
+  &__summary-card {
+    background-color: $bg-white;
+    border-radius: $radius-md;
+    padding: $space-6;
+    box-shadow: $shadow-xs;
+
+    @include tablet {
+      padding: $space-8;
+    }
+  }
+
+  &__summary-title {
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-6;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  // Summary items
+  &__summary-items {
+    @include flex-column;
+    gap: $space-4;
+    margin-bottom: $space-6;
+    padding-bottom: $space-6;
+    border-bottom: 1px solid $gray-100;
+    max-height: 300px;
+    overflow-y: auto;
+    @include custom-scrollbar;
+  }
+
+  &__summary-item {
+    display: flex;
+    gap: $space-3;
+    align-items: center;
+  }
+
+  &__summary-item-image {
+    width: 60px;
+    min-width: 60px;
+    height: 75px;
+    border-radius: $radius-sm;
+    overflow: hidden;
+    background-color: $gray-100;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Quantity badge on image
+    &::after {
+      content: attr(data-qty);
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      @include flex-center;
+      width: 20px;
+      height: 20px;
+      background-color: $gray-600;
+      color: $bg-white;
+      font-family: $font-mono;
+      font-size: 10px;
+      border-radius: $radius-circle;
+    }
+  }
+
+  &__summary-item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__summary-item-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    @include truncate;
+    margin-bottom: $space-1;
+  }
+
+  &__summary-item-variant {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+
+  &__summary-item-price {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    flex-shrink: 0;
+  }
+
+  // Discount code
+  &__discount-code {
+    display: flex;
+    gap: $space-2;
+    margin-bottom: $space-6;
+    padding-bottom: $space-6;
+    border-bottom: 1px solid $gray-100;
+
+    input {
+      @include input-base;
+      font-size: $font-size-sm;
+    }
+
+    .btn {
+      flex-shrink: 0;
+    }
+  }
+
+  // Summary rows
+  &__summary-row {
+    @include flex-between;
+    margin-bottom: $space-3;
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+
+  &__summary-value {
+    font-family: $font-mono;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+  }
+
+  &__summary-discount {
+    color: $color-success;
+  }
+
+  // Total
+  &__summary-total {
+    @include flex-between;
+    padding-top: $space-4;
+    border-top: 2px solid $gray-100;
+    margin-top: $space-4;
+    margin-bottom: $space-6;
+  }
+
+  &__summary-total-label {
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
+
+  &__summary-total-value {
+    font-family: $font-mono;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+
+    @include tablet {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  // Place order button
+  &__submit-btn {
+    @include button-base;
+    width: 100%;
+    padding: $space-4;
+    font-size: $font-size-base;
+    min-height: 56px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $radius-base;
+
+    &:hover:not(:disabled) {
+      background-color: $gold-dark;
+      box-shadow: $shadow-gold;
+    }
+  }
+
+  &__terms {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    text-align: center;
+    margin-top: $space-4;
+    line-height: $line-height-relaxed;
+
+    a {
+      color: $color-secondary;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

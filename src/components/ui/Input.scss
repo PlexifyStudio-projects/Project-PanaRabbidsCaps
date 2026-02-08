@@ -1,0 +1,124 @@
+@use '../../styles/base/variables' as *;
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  &--full-width {
+    width: 100%;
+  }
+
+  // --- Container ---
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  // --- Field ---
+  &__field {
+    width: 100%;
+    padding: $space-4 $space-4 $space-2;
+    background-color: $gray-900;
+    color: $color-accent;
+    border: 1px solid $gray-700;
+    border-radius: $radius-base;
+    font-family: $font-body;
+    font-size: $font-size-base;
+    line-height: $line-height-normal;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    outline: none;
+    appearance: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      border-color: $color-secondary;
+      box-shadow: 0 0 0 2px rgba($color-secondary, 0.15);
+    }
+
+    &--select {
+      padding-right: $space-10;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A3A3A3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right $space-4 center;
+    }
+  }
+
+  // --- With icon ---
+  &--has-icon {
+    .input-wrapper__field {
+      padding-left: $space-10;
+    }
+
+    .input-wrapper__label {
+      left: $space-10;
+    }
+  }
+
+  // --- Icon ---
+  &__icon {
+    position: absolute;
+    left: $space-3;
+    display: flex;
+    align-items: center;
+    color: $gray-400;
+    pointer-events: none;
+    font-size: $font-size-lg;
+    z-index: 1;
+  }
+
+  // --- Floating Label ---
+  &__label {
+    position: absolute;
+    left: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $gray-400;
+    font-family: $font-body;
+    font-size: $font-size-base;
+    pointer-events: none;
+    transition: all $transition-fast;
+    transform-origin: left top;
+    line-height: 1;
+
+    &--floating {
+      top: $space-2;
+      transform: translateY(0) scale(0.75);
+      color: $color-secondary;
+    }
+  }
+
+  // --- Required asterisk ---
+  &__required {
+    color: $color-error;
+    margin-left: 2px;
+  }
+
+  // --- Error state ---
+  &--error {
+    .input-wrapper__field {
+      border-color: $color-error;
+
+      &:focus {
+        box-shadow: 0 0 0 2px rgba($color-error, 0.15);
+      }
+    }
+
+    .input-wrapper__label {
+      color: $color-error;
+    }
+  }
+
+  &__error {
+    color: $color-error;
+    font-size: $font-size-xs;
+    margin: 0;
+    padding-left: $space-1;
+    font-family: $font-body;
+  }
+}

@@ -1,0 +1,429 @@
+// ============================================================
+// PANA RABBIDS - Grid System & Layout Utilities
+// Container, responsive grids, section spacing
+// ============================================================
+
+// ------------------------------------------------------------
+// CONTAINER
+// ------------------------------------------------------------
+
+.container {
+  @include container;
+
+  &--sm {
+    max-width: $container-sm;
+  }
+
+  &--md {
+    max-width: $container-md;
+  }
+
+  &--lg {
+    max-width: $container-lg;
+  }
+
+  &--xl {
+    max-width: $container-xl;
+  }
+
+  &--2xl {
+    max-width: $container-2xl;
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+
+  // Narrow container for text/forms
+  &--narrow {
+    max-width: 680px;
+  }
+}
+
+// ------------------------------------------------------------
+// SECTION SPACING
+// ------------------------------------------------------------
+
+.section {
+  @include section-padding;
+
+  &--sm {
+    padding-top: $space-8;
+    padding-bottom: $space-8;
+
+    @include desktop {
+      padding-top: $space-12;
+      padding-bottom: $space-12;
+    }
+  }
+
+  &--lg {
+    padding-top: $space-16;
+    padding-bottom: $space-16;
+
+    @include desktop {
+      padding-top: $space-24;
+      padding-bottom: $space-24;
+    }
+  }
+
+  &--none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+// Section header (title + subtitle)
+.section-header {
+  text-align: center;
+  margin-bottom: $space-8;
+
+  @include tablet {
+    margin-bottom: $space-12;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-3;
+
+    @include tablet {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-base;
+    color: $gray-500;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+
+    .section-header--left & {
+      margin-left: 0;
+    }
+  }
+
+  &__divider {
+    width: 60px;
+    height: 3px;
+    @include gradient-gold;
+    margin: $space-4 auto 0;
+    border-radius: $radius-full;
+
+    .section-header--left & {
+      margin-left: 0;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// PRODUCT GRID (Responsive auto-fill)
+// ------------------------------------------------------------
+
+.product-grid {
+  @include product-grid($space-4);
+
+  @include tablet {
+    gap: $space-6;
+  }
+
+  // Single column on mobile option
+  &--single-mobile {
+    grid-template-columns: 1fr;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  // 3 column max
+  &--3 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // 5 column for wide screens
+  &--5 {
+    @include wide {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// GENERIC GRID LAYOUTS
+// ------------------------------------------------------------
+
+.grid {
+  display: grid;
+  gap: $space-4;
+
+  @include tablet {
+    gap: $space-6;
+  }
+
+  // Column variants
+  &--2 {
+    grid-template-columns: 1fr;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--3 {
+    grid-template-columns: 1fr;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &--4 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  &--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  // Gap variants
+  &--gap-sm {
+    gap: $space-3;
+  }
+
+  &--gap-lg {
+    gap: $space-8;
+  }
+
+  &--gap-xl {
+    gap: $space-12;
+  }
+}
+
+// ------------------------------------------------------------
+// TWO COLUMN LAYOUT (Sidebar + Content)
+// ------------------------------------------------------------
+
+.layout-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @include desktop {
+    grid-template-columns: 280px 1fr;
+    gap: $space-8;
+  }
+
+  &--reverse {
+    @include desktop {
+      grid-template-columns: 1fr 280px;
+    }
+  }
+
+  &--wide-sidebar {
+    @include desktop {
+      grid-template-columns: 320px 1fr;
+    }
+  }
+}
+
+// Sticky sidebar within two-col layout
+.layout-two-col__sidebar {
+  @include desktop {
+    position: sticky;
+    top: calc(#{$header-height} + #{$space-4});
+    max-height: calc(100vh - #{$header-height} - #{$space-8});
+    overflow-y: auto;
+    @include custom-scrollbar;
+  }
+}
+
+.layout-two-col__content {
+  min-width: 0; // Prevent grid blowout
+}
+
+// ------------------------------------------------------------
+// CHECKOUT LAYOUT (Form + Summary)
+// ------------------------------------------------------------
+
+.layout-checkout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @include desktop {
+    grid-template-columns: 1fr 400px;
+    gap: $space-10;
+  }
+
+  @include wide {
+    grid-template-columns: 1fr 440px;
+  }
+}
+
+// ------------------------------------------------------------
+// FLEXBOX UTILITIES
+// ------------------------------------------------------------
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.flex-start {
+  @include flex-start;
+}
+
+.flex-end {
+  @include flex-end;
+}
+
+.flex-col {
+  @include flex-column;
+}
+
+.flex-col-center {
+  @include flex-column-center;
+}
+
+// Gap utilities
+.gap-1 { gap: $space-1; }
+.gap-2 { gap: $space-2; }
+.gap-3 { gap: $space-3; }
+.gap-4 { gap: $space-4; }
+.gap-5 { gap: $space-5; }
+.gap-6 { gap: $space-6; }
+.gap-8 { gap: $space-8; }
+
+// ------------------------------------------------------------
+// SPACING UTILITIES
+// ------------------------------------------------------------
+
+// Margin bottom
+.mb-0  { margin-bottom: $space-0; }
+.mb-2  { margin-bottom: $space-2; }
+.mb-4  { margin-bottom: $space-4; }
+.mb-6  { margin-bottom: $space-6; }
+.mb-8  { margin-bottom: $space-8; }
+.mb-12 { margin-bottom: $space-12; }
+.mb-16 { margin-bottom: $space-16; }
+
+// Margin top
+.mt-0  { margin-top: $space-0; }
+.mt-2  { margin-top: $space-2; }
+.mt-4  { margin-top: $space-4; }
+.mt-6  { margin-top: $space-6; }
+.mt-8  { margin-top: $space-8; }
+.mt-12 { margin-top: $space-12; }
+
+// Padding
+.p-4  { padding: $space-4; }
+.p-6  { padding: $space-6; }
+.p-8  { padding: $space-8; }
+
+.px-4 { padding-left: $space-4; padding-right: $space-4; }
+.py-4 { padding-top: $space-4; padding-bottom: $space-4; }
+.px-6 { padding-left: $space-6; padding-right: $space-6; }
+.py-6 { padding-top: $space-6; padding-bottom: $space-6; }
+
+// ------------------------------------------------------------
+// VISIBILITY / RESPONSIVE DISPLAY
+// ------------------------------------------------------------
+
+.hide-mobile {
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.show-tablet-up {
+  display: none !important;
+
+  @include tablet {
+    display: block !important;
+  }
+}
+
+.show-desktop-up {
+  display: none !important;
+
+  @include desktop {
+    display: block !important;
+  }
+}
+
+// ------------------------------------------------------------
+// DIVIDER
+// ------------------------------------------------------------
+
+.divider {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: $space-6 0;
+
+  &--gold {
+    border-top-color: $color-secondary;
+  }
+
+  &--dark {
+    border-top-color: $border-color-dark;
+  }
+
+  &--thick {
+    border-top-width: 2px;
+  }
+}

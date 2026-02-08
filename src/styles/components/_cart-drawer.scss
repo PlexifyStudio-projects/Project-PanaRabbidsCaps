@@ -1,0 +1,458 @@
+// ============================================================
+// PANA RABBIDS - Cart Drawer (Slide-out)
+// BEM: .cart-drawer, .cart-drawer__header, etc.
+// Slides from right side
+// ============================================================
+
+// ------------------------------------------------------------
+// OVERLAY
+// ------------------------------------------------------------
+
+.cart-drawer-overlay {
+  @include fixed-fill;
+  background: rgba($color-primary, $opacity-backdrop);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: $z-overlay;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-base, visibility 0s linear $transition-base;
+  cursor: pointer;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+// ------------------------------------------------------------
+// DRAWER CONTAINER
+// ------------------------------------------------------------
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  height: 100dvh;
+  background-color: $bg-white;
+  z-index: $z-modal;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform $transition-slow;
+  box-shadow: $shadow-dark-lg;
+
+  &.is-active {
+    transform: translateX(0);
+  }
+
+  @include mobile-only {
+    max-width: 100%;
+  }
+
+  // ------------------------------------------------------------
+  // HEADER
+  // ------------------------------------------------------------
+
+  &__header {
+    @include flex-between;
+    padding: $space-4 $space-5;
+    border-bottom: 1px solid $gray-100;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    @include flex-start;
+    gap: $space-2;
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+  }
+
+  &__count {
+    @include flex-center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 $space-2;
+    background-color: $color-primary;
+    color: $color-accent;
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    border-radius: $radius-full;
+    line-height: 1;
+  }
+
+  &__close {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-circle;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // FREE SHIPPING PROGRESS BAR
+  // ------------------------------------------------------------
+
+  &__shipping-bar {
+    padding: $space-3 $space-5;
+    background-color: $gray-50;
+    border-bottom: 1px solid $gray-100;
+    flex-shrink: 0;
+  }
+
+  &__shipping-text {
+    font-size: $font-size-xs;
+    color: $gray-600;
+    text-align: center;
+    margin-bottom: $space-2;
+
+    strong {
+      color: $color-secondary;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__shipping-progress {
+    width: 100%;
+    height: 4px;
+    background-color: $gray-200;
+    border-radius: $radius-full;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__shipping-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, $gold-dark, $gold-base, $gold-light);
+    border-radius: $radius-full;
+    transition: width $transition-slow;
+    position: relative;
+
+    // Shimmer effect on progress
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      animation: shimmer 2s infinite;
+    }
+  }
+
+  &__shipping-complete {
+    font-size: $font-size-xs;
+    color: $color-success;
+    text-align: center;
+    font-weight: $font-weight-medium;
+
+    svg {
+      display: inline;
+      width: 14px;
+      height: 14px;
+      vertical-align: middle;
+      margin-right: $space-1;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // CART ITEMS LIST
+  // ------------------------------------------------------------
+
+  &__items {
+    flex: 1;
+    overflow-y: auto;
+    padding: $space-4 $space-5;
+    @include custom-scrollbar;
+  }
+
+  // ------------------------------------------------------------
+  // EMPTY STATE
+  // ------------------------------------------------------------
+
+  &__empty {
+    @include flex-column-center;
+    height: 100%;
+    padding: $space-8;
+    text-align: center;
+
+    &-icon {
+      width: 80px;
+      height: 80px;
+      color: $gray-300;
+      margin-bottom: $space-4;
+    }
+
+    &-title {
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      margin-bottom: $space-2;
+    }
+
+    &-text {
+      font-size: $font-size-sm;
+      color: $gray-500;
+      margin-bottom: $space-6;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // INDIVIDUAL CART ITEM
+  // ------------------------------------------------------------
+
+  &__item {
+    display: flex;
+    gap: $space-3;
+    padding: $space-3 0;
+    border-bottom: 1px solid $gray-100;
+    animation: fadeIn $transition-fast forwards;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__item-image {
+    width: 80px;
+    min-width: 80px;
+    height: 100px;
+    border-radius: $radius-base;
+    overflow: hidden;
+    background-color: $gray-100;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__item-details {
+    flex: 1;
+    @include flex-column;
+    justify-content: space-between;
+    min-width: 0; // Prevent flex overflow
+  }
+
+  &__item-name {
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    @include truncate(2);
+    margin-bottom: $space-1;
+  }
+
+  &__item-variant {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    margin-bottom: $space-2;
+  }
+
+  &__item-bottom {
+    @include flex-between;
+  }
+
+  // Quantity Controls
+  &__item-quantity {
+    @include inline-flex-center;
+    border: 1px solid $gray-200;
+    border-radius: $radius-base;
+    overflow: hidden;
+  }
+
+  &__item-qty-btn {
+    @include flex-center;
+    width: 30px;
+    height: 30px;
+    font-size: $font-size-base;
+    color: $gray-600;
+    transition: all $transition-fast;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+      color: $color-primary;
+    }
+
+    &:disabled {
+      color: $gray-300;
+      cursor: not-allowed;
+    }
+  }
+
+  &__item-qty-value {
+    width: 36px;
+    text-align: center;
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border-left: 1px solid $gray-200;
+    border-right: 1px solid $gray-200;
+    line-height: 30px;
+  }
+
+  // Item Price
+  &__item-price {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-align: right;
+  }
+
+  &__item-price-compare {
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    color: $gray-400;
+    text-decoration: line-through;
+    display: block;
+  }
+
+  // Remove item button
+  &__item-remove {
+    @include flex-center;
+    width: 28px;
+    height: 28px;
+    color: $gray-400;
+    border-radius: $radius-circle;
+    transition: all $transition-fast;
+    flex-shrink: 0;
+    align-self: flex-start;
+
+    &:hover {
+      color: $color-error;
+      background-color: $color-error-light;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SUMMARY SECTION
+  // ------------------------------------------------------------
+
+  &__summary {
+    padding: $space-4 $space-5;
+    border-top: 2px solid $gray-100;
+    flex-shrink: 0;
+    background-color: $gray-50;
+  }
+
+  &__summary-row {
+    @include flex-between;
+    margin-bottom: $space-2;
+    font-size: $font-size-sm;
+    color: $gray-600;
+
+    &:last-of-type {
+      margin-bottom: $space-4;
+    }
+  }
+
+  &__summary-label {
+    color: $gray-500;
+  }
+
+  &__summary-value {
+    font-family: $font-mono;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+  }
+
+  // Total row
+  &__total {
+    @include flex-between;
+    padding-top: $space-3;
+    border-top: 1px solid $gray-200;
+    margin-bottom: $space-4;
+  }
+
+  &__total-label {
+    font-family: $font-heading;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+  }
+
+  &__total-value {
+    font-family: $font-mono;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+  }
+
+  // Shipping note
+  &__shipping-note {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    text-align: center;
+    margin-bottom: $space-3;
+  }
+
+  // ------------------------------------------------------------
+  // CHECKOUT BUTTON
+  // ------------------------------------------------------------
+
+  &__checkout {
+    @include button-base;
+    width: 100%;
+    padding: $space-4;
+    font-size: $font-size-base;
+    min-height: 52px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $radius-base;
+
+    &:hover:not(:disabled) {
+      background-color: $gold-dark;
+      box-shadow: $shadow-gold;
+    }
+  }
+
+  &__continue-shopping {
+    display: block;
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $gray-500;
+    margin-top: $space-3;
+    transition: color $transition-fast;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// BODY LOCK WHEN DRAWER IS OPEN
+// ------------------------------------------------------------
+
+body.cart-open {
+  overflow: hidden;
+}

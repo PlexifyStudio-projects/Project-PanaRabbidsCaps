@@ -1,0 +1,104 @@
+@use '../../styles/base/variables' as *;
+
+.modal-portal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  background-color: $gray-900;
+  border: 1px solid $gray-700;
+  border-radius: $radius-md;
+  box-shadow: $shadow-dark-lg;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 2;
+
+  // --- Sizes ---
+  &--sm {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  &--md {
+    width: 90%;
+    max-width: 560px;
+  }
+
+  &--lg {
+    width: 90%;
+    max-width: 800px;
+  }
+
+  // --- Backdrop ---
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, $opacity-backdrop);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+  }
+
+  // --- Positioner ---
+  &__positioner {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: $space-4;
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+
+  // --- Header ---
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-5 $space-6;
+    border-bottom: 1px solid $gray-800;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-accent;
+    letter-spacing: $letter-spacing-wide;
+    margin: 0;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: $radius-base;
+    background: transparent;
+    color: $gray-400;
+    cursor: pointer;
+    transition: color $transition-fast, background-color $transition-fast;
+
+    &:hover {
+      color: $color-accent;
+      background-color: rgba($color-accent, 0.08);
+    }
+  }
+
+  // --- Body ---
+  &__body {
+    padding: $space-6;
+  }
+}

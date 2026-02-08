@@ -1,0 +1,455 @@
+// ============================================================
+// PANA RABBIDS - Modern CSS Reset / Normalize
+// Based on modern-normalize + custom resets
+// ============================================================
+
+// ------------------------------------------------------------
+// BOX MODEL
+// ------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ------------------------------------------------------------
+// DOCUMENT
+// ------------------------------------------------------------
+
+html {
+  // Prevent font size inflation on mobile
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  // Smooth scrolling
+  scroll-behavior: smooth;
+
+  // Base font size
+  font-size: 16px;
+
+  // Better font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+
+  // Scrollbar gutter to prevent layout shift
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-primary;
+  background-color: $bg-light;
+
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+
+  // Better text rendering
+  font-feature-settings: 'kern' 1;
+  font-kerning: normal;
+}
+
+// ------------------------------------------------------------
+// TYPOGRAPHY RESETS
+// ------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+// Remove default list styles
+ul, ol {
+  list-style: none;
+}
+
+// Remove text decoration from links
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid $color-secondary;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// Bold elements
+b, strong {
+  font-weight: $font-weight-bold;
+}
+
+// Small text
+small {
+  font-size: $font-size-sm;
+}
+
+// Code elements
+code, kbd, samp, pre {
+  font-family: $font-mono;
+  font-size: 0.95em;
+}
+
+// Abbreviations
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+// Subscript and Superscript
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+// Horizontal rule
+hr {
+  border: none;
+  border-top: $border-width solid $border-color;
+  margin: $space-8 0;
+}
+
+// Blockquote
+blockquote {
+  border-left: 3px solid $color-secondary;
+  padding-left: $space-4;
+  font-style: italic;
+}
+
+// ------------------------------------------------------------
+// MEDIA RESETS
+// ------------------------------------------------------------
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  // Remove the gap below images
+  vertical-align: middle;
+
+  // Better image rendering
+  image-rendering: -webkit-optimize-contrast;
+
+  // Prevent dragging
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+svg {
+  // Allow SVGs to scale correctly
+  overflow: visible;
+}
+
+// Responsive iframes
+iframe {
+  border: 0;
+  max-width: 100%;
+}
+
+// ------------------------------------------------------------
+// FORM RESETS
+// ------------------------------------------------------------
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+}
+
+input, textarea {
+  &::placeholder {
+    color: $gray-400;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-secondary;
+    outline-offset: 1px;
+    border-radius: $radius-sm;
+  }
+
+  // Remove autofill styling
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px $bg-white inset;
+    -webkit-text-fill-color: $color-primary;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+}
+
+// Remove number input spinners
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+// Remove search input clear button
+input[type="search"] {
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+// File input
+input[type="file"] {
+  cursor: pointer;
+}
+
+// Fieldset
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
+// Progress bar
+progress {
+  vertical-align: baseline;
+  appearance: none;
+}
+
+// ------------------------------------------------------------
+// TABLE RESETS
+// ------------------------------------------------------------
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: $font-weight-semibold;
+}
+
+// ------------------------------------------------------------
+// SELECTION
+// ------------------------------------------------------------
+
+::selection {
+  background-color: $color-secondary;
+  color: $color-primary;
+}
+
+::-moz-selection {
+  background-color: $color-secondary;
+  color: $color-primary;
+}
+
+// ------------------------------------------------------------
+// FOCUS STYLES
+// ------------------------------------------------------------
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid $color-secondary;
+  outline-offset: 2px;
+}
+
+// ------------------------------------------------------------
+// SCROLLBAR STYLING - Premium Dark/Gold Theme
+// ------------------------------------------------------------
+
+// Webkit Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(250, 250, 250, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-secondary;
+  border-radius: $radius-full;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px rgba($color-secondary, 0.3);
+
+  &:hover {
+    background: $gold-light;
+    box-shadow: 0 0 12px rgba($color-secondary, 0.5);
+  }
+
+  &:active {
+    background: $gold-light;
+    box-shadow: 0 0 16px rgba($color-secondary, 0.6);
+  }
+}
+
+// Corner piece (where horizontal and vertical meet)
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// Firefox Scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $color-secondary rgba(250, 250, 250, 0.03);
+}
+
+// ------------------------------------------------------------
+// ACCESSIBILITY
+// ------------------------------------------------------------
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Screen reader only utility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Skip to content link
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: $space-4;
+  z-index: $z-max;
+  padding: $space-2 $space-4;
+  background: $color-secondary;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-base;
+
+  &:focus {
+    top: $space-4;
+  }
+}
+
+// ------------------------------------------------------------
+// MISC
+// ------------------------------------------------------------
+
+// Remove tap highlight on mobile
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Dialog reset
+dialog {
+  padding: 0;
+  border: none;
+  background: none;
+  max-width: none;
+  max-height: none;
+}
+
+// Summary/Details
+summary {
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+// Hidden attribute
+[hidden] {
+  display: none !important;
+}

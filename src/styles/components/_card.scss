@@ -1,0 +1,319 @@
+// ============================================================
+// PANA RABBIDS - Card Component
+// BEM: .card, .card__image, .card__content, etc.
+// ============================================================
+
+// ------------------------------------------------------------
+// BASE CARD
+// ------------------------------------------------------------
+
+.card {
+  position: relative;
+  background-color: $bg-white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  // Hover elevation
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+
+  // ------------------------------------------------------------
+  // IMAGE
+  // ------------------------------------------------------------
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: $aspect-product;
+    background-color: $gray-100;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+
+    // Hover zoom
+    .card:hover & img {
+      transform: scale(1.05);
+    }
+
+    // Placeholder / skeleton
+    &--skeleton {
+      @include shimmer;
+    }
+  }
+
+  // Image overlay (for hover actions)
+  &__overlay {
+    @include absolute-fill;
+    @include flex-center;
+    background: rgba($color-primary, 0);
+    transition: background $transition-base;
+    z-index: $z-above;
+
+    .card:hover & {
+      background: rgba($color-primary, 0.3);
+    }
+  }
+
+  // ------------------------------------------------------------
+  // CONTENT
+  // ------------------------------------------------------------
+
+  &__content {
+    padding: $space-4;
+
+    @include tablet {
+      padding: $space-5;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+    margin-bottom: $space-2;
+    @include truncate(2);
+
+    @include tablet {
+      font-size: $font-size-md;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $gray-500;
+    margin-bottom: $space-2;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+    @include truncate(3);
+    margin-bottom: $space-3;
+  }
+
+  &__footer {
+    padding: $space-3 $space-4;
+    border-top: 1px solid $gray-100;
+    @include flex-between;
+  }
+
+  // ------------------------------------------------------------
+  // BADGE
+  // ------------------------------------------------------------
+
+  &__badge {
+    position: absolute;
+    top: $space-3;
+    left: $space-3;
+    z-index: $z-above;
+    @include badge;
+    animation: popIn 300ms ease forwards;
+  }
+
+  &__badge--right {
+    left: auto;
+    right: $space-3;
+  }
+
+  &__badge--bottom {
+    top: auto;
+    bottom: $space-3;
+  }
+
+  // Badge variants
+  &__badge--new {
+    background-color: $color-secondary;
+    color: $color-primary;
+  }
+
+  &__badge--sale {
+    background-color: $color-error;
+    color: $bg-white;
+  }
+
+  &__badge--soldout {
+    background-color: $gray-700;
+    color: $bg-white;
+  }
+
+  // ------------------------------------------------------------
+  // VARIANTS
+  // ------------------------------------------------------------
+
+  // Dark card
+  &--dark {
+    background-color: $bg-dark;
+    color: $color-accent;
+
+    .card__title {
+      color: $color-accent;
+    }
+
+    .card__subtitle {
+      color: $gray-400;
+    }
+
+    .card__description {
+      color: $gray-400;
+    }
+
+    .card__footer {
+      border-top-color: $gray-800;
+    }
+  }
+
+  // Bordered card
+  &--bordered {
+    border: $border-width solid $border-color;
+    box-shadow: none;
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+  }
+
+  // Flat card (no shadow, no hover)
+  &--flat {
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Compact card
+  &--compact {
+    .card__content {
+      padding: $space-3;
+    }
+
+    .card__title {
+      font-size: $font-size-sm;
+    }
+  }
+
+  // Horizontal card
+  &--horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .card__image {
+      width: 140px;
+      min-width: 140px;
+      aspect-ratio: auto;
+
+      @include tablet {
+        width: 200px;
+        min-width: 200px;
+      }
+    }
+
+    .card__content {
+      flex: 1;
+      @include flex-column;
+      justify-content: center;
+    }
+  }
+
+  // Featured / Highlighted card
+  &--featured {
+    border: $border-width-2 solid $color-secondary;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      @include gradient-gold;
+      z-index: $z-above;
+    }
+
+    &:hover {
+      box-shadow: $shadow-gold;
+    }
+  }
+
+  // Clickable card
+  &--clickable {
+    cursor: pointer;
+
+    &:active {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// CARD GRID
+// ------------------------------------------------------------
+
+.card-grid {
+  @include product-grid;
+
+  &--2 {
+    @include grid(1, $space-6);
+
+    @include tablet {
+      @include grid(2, $space-6);
+    }
+  }
+
+  &--3 {
+    @include grid(1, $space-6);
+
+    @include tablet {
+      @include grid(2, $space-6);
+    }
+
+    @include desktop {
+      @include grid(3, $space-6);
+    }
+  }
+}
+
+// Skeleton card for loading
+.card-skeleton {
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  &__image {
+    aspect-ratio: $aspect-product;
+    @include shimmer;
+  }
+
+  &__content {
+    padding: $space-4;
+  }
+
+  &__line {
+    height: 14px;
+    border-radius: $radius-sm;
+    margin-bottom: $space-2;
+    @include shimmer;
+
+    &--short {
+      width: 60%;
+    }
+
+    &--medium {
+      width: 80%;
+    }
+
+    &--full {
+      width: 100%;
+    }
+  }
+}

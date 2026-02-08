@@ -1,0 +1,55 @@
+// ============================================================
+// PANA RABBIDS - Main Stylesheet Entry Point
+// Premium Streetwear E-Commerce Design System
+// ============================================================
+//
+// Architecture (ITCSS-inspired):
+// 1. Base     - Variables, reset, typography, mixins, animations
+// 2. Layout   - Major layout structures (header, footer, grid, sidebar)
+// 3. Components - Reusable UI components
+// 4. Pages    - Page-specific styles
+//
+// Import order matters: variables and mixins must come first
+// since all other files depend on them.
+// ============================================================
+
+// -----------------------------------------------
+// 1. BASE
+// Variables & mixins (no CSS output, just tokens)
+// -----------------------------------------------
+@import 'base/variables';
+@import 'base/mixins';
+
+// Reset & foundation (generates CSS)
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/animations';
+
+// -----------------------------------------------
+// 2. LAYOUT
+// Structural layout patterns
+// -----------------------------------------------
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+
+// -----------------------------------------------
+// 3. COMPONENTS
+// Reusable UI components
+// -----------------------------------------------
+@import 'components/button';
+@import 'components/card';
+@import 'components/modal';
+@import 'components/product-card';
+@import 'components/cart-drawer';
+
+// -----------------------------------------------
+// 4. PAGES
+// Page-specific overrides and unique sections
+// -----------------------------------------------
+@import 'pages/home';
+@import 'pages/catalog';
+@import 'pages/product-detail';
+@import 'pages/checkout';
+@import 'pages/admin';

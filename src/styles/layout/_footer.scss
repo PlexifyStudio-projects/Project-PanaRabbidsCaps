@@ -1,0 +1,400 @@
+// ============================================================
+// PANA RABBIDS - Footer
+// BEM: .footer, .footer__grid, .footer__column, etc.
+// Dark background premium footer
+// ============================================================
+
+.footer {
+  background-color: $color-primary;
+  color: $gray-300;
+  margin-top: auto;
+
+  // ------------------------------------------------------------
+  // NEWSLETTER SECTION (Above main footer)
+  // ------------------------------------------------------------
+
+  &__newsletter {
+    padding: $space-12 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__newsletter-inner {
+    @include container;
+    @include flex-column-center;
+    text-align: center;
+  }
+
+  &__newsletter-title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-extrabold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    margin-bottom: $space-2;
+
+    @include tablet {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__newsletter-subtitle {
+    font-size: $font-size-base;
+    color: $gray-400;
+    margin-bottom: $space-6;
+    max-width: 500px;
+  }
+
+  &__newsletter-form {
+    display: flex;
+    gap: $space-3;
+    width: 100%;
+    max-width: 480px;
+    flex-direction: column;
+
+    @include mobile {
+      flex-direction: row;
+    }
+  }
+
+  &__newsletter-input {
+    flex: 1;
+    padding: $space-3 $space-4;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-base;
+    color: $color-accent;
+    font-size: $font-size-base;
+    transition: border-color $transition-base;
+
+    &::placeholder {
+      color: $gray-500;
+    }
+
+    &:focus {
+      border-color: $color-secondary;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($color-secondary, 0.15);
+    }
+  }
+
+  &__newsletter-btn {
+    @include button-base;
+    padding: $space-3 $space-6;
+    background-color: $color-secondary;
+    color: $color-primary;
+    font-size: $font-size-sm;
+    border-radius: $radius-base;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $gold-dark;
+      box-shadow: $shadow-gold;
+    }
+  }
+
+  &__newsletter-consent {
+    font-size: $font-size-xs;
+    color: $gray-600;
+    margin-top: $space-3;
+
+    a {
+      color: $gray-400;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // MAIN FOOTER GRID
+  // ------------------------------------------------------------
+
+  &__main {
+    @include container;
+    padding-top: $space-12;
+    padding-bottom: $space-12;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-8;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $space-10;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // COLUMNS
+  // ------------------------------------------------------------
+
+  &__column {
+    // nothing extra
+  }
+
+  &__column-title {
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-widest;
+    margin-bottom: $space-5;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: $color-secondary;
+      margin-top: $space-2;
+    }
+  }
+
+  // About column
+  &__about-text {
+    font-size: $font-size-sm;
+    color: $gray-400;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-4;
+  }
+
+  // Links column
+  &__links {
+    @include flex-column;
+    gap: $space-3;
+  }
+
+  &__link {
+    font-size: $font-size-sm;
+    color: $gray-400;
+    transition: color $transition-fast;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+
+    &:hover {
+      color: $color-secondary;
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+  }
+
+  // Contact column
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    margin-bottom: $space-4;
+    font-size: $font-size-sm;
+    color: $gray-400;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: $color-secondary;
+      margin-top: 2px;
+    }
+
+    a {
+      color: inherit;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  // Social column
+  &__social {
+    display: flex;
+    gap: $space-3;
+    margin-top: $space-4;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: $radius-circle;
+    color: $gray-400;
+    transition: all $transition-base;
+
+    &:hover {
+      background-color: $color-secondary;
+      border-color: $color-secondary;
+      color: $color-primary;
+      transform: translateY(-2px);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // PAYMENT METHODS BAR
+  // ------------------------------------------------------------
+
+  &__payment {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: $space-6 0;
+  }
+
+  &__payment-inner {
+    @include container;
+    @include flex-column-center;
+    gap: $space-4;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__payment-label {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+  }
+
+  &__payment-icons {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img, svg {
+      height: 24px;
+      width: auto;
+      opacity: 0.5;
+      transition: opacity $transition-fast;
+      filter: grayscale(100%) brightness(1.5);
+
+      &:hover {
+        opacity: 1;
+        filter: none;
+      }
+    }
+  }
+
+  // Security badges
+  &__security {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // COPYRIGHT BAR
+  // ------------------------------------------------------------
+
+  &__copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: $space-4 0;
+  }
+
+  &__copyright-inner {
+    @include container;
+    @include flex-column-center;
+    gap: $space-3;
+    text-align: center;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  &__copyright-text {
+    font-size: $font-size-xs;
+    color: $gray-600;
+  }
+
+  &__copyright-links {
+    display: flex;
+    gap: $space-4;
+
+    a {
+      font-size: $font-size-xs;
+      color: $gray-600;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // BACK TO TOP BUTTON
+  // ------------------------------------------------------------
+
+  &__back-to-top {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border-radius: $radius-circle;
+    position: fixed;
+    bottom: $space-6;
+    right: $space-4;
+    z-index: $z-sticky;
+    box-shadow: $shadow-md;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all $transition-base;
+
+    &.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &:hover {
+      background-color: $gold-dark;
+      transform: translateY(-2px);
+      box-shadow: $shadow-gold;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include tablet {
+      right: $space-6;
+      bottom: $space-8;
+    }
+  }
+}

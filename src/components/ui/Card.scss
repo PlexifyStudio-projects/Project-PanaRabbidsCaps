@@ -1,0 +1,23 @@
+@use '../../styles/base/variables' as *;
+
+.card {
+  background-color: $gray-900;
+  border: 1px solid $gray-800;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: box-shadow $transition-base;
+
+  &--hoverable {
+    cursor: default;
+  }
+
+  &--clickable {
+    cursor: pointer;
+    outline: none;
+
+    &:focus-visible {
+      outline: 2px solid $color-secondary;
+      outline-offset: 2px;
+    }
+  }
+}

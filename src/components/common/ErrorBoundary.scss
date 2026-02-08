@@ -1,0 +1,102 @@
+@use '../../styles/base/variables' as *;
+
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $bg-dark;
+  padding: $space-6;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-5;
+    text-align: center;
+    max-width: 480px;
+  }
+
+  &__icon {
+    color: $color-secondary;
+    opacity: 0.8;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__message {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    color: $gray-400;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+
+  &__details {
+    width: 100%;
+    padding: $space-4;
+    background-color: $gray-900;
+    border: 1px solid $gray-700;
+    border-radius: $radius-base;
+    color: $color-error;
+    font-family: $font-mono;
+    font-size: $font-size-xs;
+    text-align: left;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-4;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-3 $space-6;
+    border-radius: $radius-base;
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all $transition-fast;
+    border: 2px solid transparent;
+
+    &--primary {
+      background-color: $color-secondary;
+      color: $color-primary;
+      border-color: $color-secondary;
+
+      &:hover {
+        background-color: $gold-dark;
+        border-color: $gold-dark;
+      }
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: $color-secondary;
+      border-color: $color-secondary;
+
+      &:hover {
+        background-color: rgba($color-secondary, 0.1);
+      }
+    }
+  }
+}
