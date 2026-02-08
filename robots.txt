@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://panarabbids.com/sitemap.xml
+
+# Bloquear panel admin de indexación
+Disallow: /admin/
