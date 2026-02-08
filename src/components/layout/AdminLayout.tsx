@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - AdminLayout Component
+// PlexifyCaps - AdminLayout Component
 // Clean admin layout with sidebar + content area
 // ============================================================
 

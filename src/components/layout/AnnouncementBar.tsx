@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Premium Announcement Bar
+// PlexifyCaps - Premium Announcement Bar
 // Fixed at top, slides up on scroll to give header full stage
 // Infinite scrolling marquee with SVG icons
 // ============================================================

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - ContactPage (Premium Redesign)
+// PlexifyCaps - ContactPage (Premium Redesign)
 // Full-screen hero, glassmorphism form, animated contact cards,
 // FAQ accordion, social grid, and location section
 // ============================================================
@@ -108,7 +108,7 @@ const ContactPage = () => {
     <>
       <SEOHead
         title="Contacto"
-        description="Contacta al equipo de Pana Rabbids. Estamos aqui para ayudarte con cualquier consulta."
+        description="Contacta al equipo de PlexifyCaps. Estamos aqui para ayudarte con cualquier consulta."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>
@@ -480,9 +480,9 @@ const ContactPage = () => {
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
                     {[
-                      { name: 'Instagram', href: 'https://instagram.com/panarabbids', color: '#E1306C', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> },
-                      { name: 'TikTok', href: 'https://tiktok.com/@panarabbids', color: '#00F2EA', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg> },
-                      { name: 'Facebook', href: 'https://facebook.com/panarabbids', color: '#1877F2', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg> },
+                      { name: 'Instagram', href: 'https://instagram.com/plexifycaps', color: '#E1306C', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> },
+                      { name: 'TikTok', href: 'https://tiktok.com/@plexifycaps', color: '#00F2EA', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg> },
+                      { name: 'Facebook', href: 'https://facebook.com/plexifycaps', color: '#1877F2', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg> },
                     ].map((social) => (
                       <a
                         key={social.name}

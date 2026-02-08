@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - CartDrawer Component (Enhanced)
+// PlexifyCaps - CartDrawer Component (Enhanced)
 // Premium glass morphism slide-out cart drawer from the right
 // Dark luxury theme with gold accents and smooth animations
 // All inline styles - no external SCSS dependency

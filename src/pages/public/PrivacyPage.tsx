@@ -70,7 +70,7 @@ const PrivacyPage = () => {
     <>
       <SEOHead
         title="Pol\u00EDtica de Privacidad"
-        description="Conoce c\u00F3mo Pana Rabbids protege y maneja tu informaci\u00F3n personal. Pol\u00EDtica de privacidad y protecci\u00F3n de datos."
+        description="Conoce c\u00F3mo PlexifyCaps protege y maneja tu informaci\u00F3n personal. Pol\u00EDtica de privacidad y protecci\u00F3n de datos."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>

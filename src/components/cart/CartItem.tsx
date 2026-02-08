@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - CartItem Component
+// PlexifyCaps - CartItem Component
 // Individual cart item row for the CartDrawer
 // Premium styling with quantity controls and remove action
 // ============================================================

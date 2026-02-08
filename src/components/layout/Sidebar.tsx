@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Admin Sidebar (Simplified & User-Friendly)
+// PlexifyCaps - Admin Sidebar (Simplified & User-Friendly)
 // Clean navigation with clear labels and friendly design
 // ============================================================
 
@@ -193,7 +193,7 @@ const Sidebar = () => {
                 color: '#C4A35A',
                 letterSpacing: 2,
               }}>
-                PANA RABBIDS
+                PLEXIFYCAPS
               </div>
               <div style={{
                 fontSize: 10,

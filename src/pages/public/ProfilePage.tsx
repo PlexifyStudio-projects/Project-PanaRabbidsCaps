@@ -51,7 +51,7 @@ const ProfilePage = () => {
     <>
     <SEOHead
       title="Mi Cuenta"
-      description="Gestiona tu cuenta Pana Rabbids. Edita tu perfil, revisa pedidos y favoritos."
+      description="Gestiona tu cuenta PlexifyCaps. Edita tu perfil, revisa pedidos y favoritos."
     />
     <div style={{ maxWidth: '960px', margin: '0 auto', padding: '40px 20px' }}>
       <h1

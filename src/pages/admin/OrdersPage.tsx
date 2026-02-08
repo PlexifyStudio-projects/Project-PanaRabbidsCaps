@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Orders Page (Admin)
+// PlexifyCaps - Orders Page (Admin)
 // Real orders from localStorage with full status management
 // and inline editing of order details
 // ============================================================

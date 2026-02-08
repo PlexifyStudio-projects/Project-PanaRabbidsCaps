@@ -13,11 +13,11 @@ const fadeUp = {
 const sections = [
   {
     title: '1. Aceptaci\u00F3n de t\u00E9rminos',
-    content: 'Al acceder y utilizar el sitio web de Pana Rabbids (panarabbids.com), aceptas estos T\u00E9rminos y Condiciones en su totalidad. Si no est\u00E1s de acuerdo con alguno de estos t\u00E9rminos, te pedimos que no utilices nuestro sitio web ni realices compras a trav\u00E9s del mismo.',
+    content: 'Al acceder y utilizar el sitio web de PlexifyCaps (plexifycaps.com), aceptas estos T\u00E9rminos y Condiciones en su totalidad. Si no est\u00E1s de acuerdo con alguno de estos t\u00E9rminos, te pedimos que no utilices nuestro sitio web ni realices compras a trav\u00E9s del mismo.',
   },
   {
     title: '2. Informaci\u00F3n de la empresa',
-    content: 'Pana Rabbids es una marca colombiana dedicada a la comercializaci\u00F3n de gorras premium originales. Operamos desde Bucaramanga, Santander, Colombia. Para cualquier consulta puedes contactarnos a trav\u00E9s de nuestros canales oficiales.',
+    content: 'PlexifyCaps es una marca colombiana dedicada a la comercializaci\u00F3n de gorras premium originales. Operamos desde Bucaramanga, Santander, Colombia. Para cualquier consulta puedes contactarnos a trav\u00E9s de nuestros canales oficiales.',
   },
   {
     title: '3. Productos y precios',
@@ -41,15 +41,15 @@ const sections = [
   },
   {
     title: '8. Propiedad intelectual',
-    content: 'Todo el contenido del sitio web de Pana Rabbids, incluyendo textos, im\u00E1genes, logos, dise\u00F1os y c\u00F3digo, est\u00E1 protegido por derechos de autor. Queda prohibida su reproducci\u00F3n, distribuci\u00F3n o uso sin autorizaci\u00F3n previa por escrito.',
+    content: 'Todo el contenido del sitio web de PlexifyCaps, incluyendo textos, im\u00E1genes, logos, dise\u00F1os y c\u00F3digo, est\u00E1 protegido por derechos de autor. Queda prohibida su reproducci\u00F3n, distribuci\u00F3n o uso sin autorizaci\u00F3n previa por escrito.',
   },
   {
     title: '9. Cuenta de usuario',
-    content: 'Al crear una cuenta en Pana Rabbids, eres responsable de mantener la confidencialidad de tus credenciales. Nos reservamos el derecho de suspender o eliminar cuentas que infrinjan estos t\u00E9rminos o que muestren actividad sospechosa.',
+    content: 'Al crear una cuenta en PlexifyCaps, eres responsable de mantener la confidencialidad de tus credenciales. Nos reservamos el derecho de suspender o eliminar cuentas que infrinjan estos t\u00E9rminos o que muestren actividad sospechosa.',
   },
   {
     title: '10. Modificaciones',
-    content: 'Pana Rabbids se reserva el derecho de modificar estos T\u00E9rminos y Condiciones en cualquier momento. Los cambios entrar\u00E1n en vigor desde su publicaci\u00F3n en el sitio web. Es responsabilidad del usuario revisar peri\u00F3dicamente estos t\u00E9rminos.',
+    content: 'PlexifyCaps se reserva el derecho de modificar estos T\u00E9rminos y Condiciones en cualquier momento. Los cambios entrar\u00E1n en vigor desde su publicaci\u00F3n en el sitio web. Es responsabilidad del usuario revisar peri\u00F3dicamente estos t\u00E9rminos.',
   },
 ];
 
@@ -58,7 +58,7 @@ const TermsPage = () => {
     <>
       <SEOHead
         title="T\u00E9rminos y Condiciones"
-        description="T\u00E9rminos y condiciones de uso del sitio web y compras en Pana Rabbids. Lee nuestras pol\u00EDticas de compra, env\u00EDos y devoluciones."
+        description="T\u00E9rminos y condiciones de uso del sitio web y compras en PlexifyCaps. Lee nuestras pol\u00EDticas de compra, env\u00EDos y devoluciones."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>

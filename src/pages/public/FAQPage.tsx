@@ -60,7 +60,7 @@ const FAQPage = () => {
     <>
       <SEOHead
         title="Preguntas Frecuentes"
-        description="Resuelve tus dudas sobre pedidos, env\u00EDos, pagos, devoluciones y productos en Pana Rabbids."
+        description="Resuelve tus dudas sobre pedidos, env\u00EDos, pagos, devoluciones y productos en PlexifyCaps."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>

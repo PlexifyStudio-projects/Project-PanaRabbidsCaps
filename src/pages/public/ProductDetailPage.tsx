@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - ProductDetailPage
+// PlexifyCaps - ProductDetailPage
 // Premium luxury product detail with image gallery, variant
 // selectors, cart integration, tabs, and related products
 // Enhanced: glass morphism, animated CTA, stock urgency,

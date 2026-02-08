@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Premium Glassmorphism Header Component
+// PlexifyCaps - Premium Glassmorphism Header Component
 // Fixed sticky header with mega menu, animated search overlay,
 // cart badge with spring animation, scroll-aware glass effect
 // Responsive: desktop mega menu + mobile slide-from-right nav
@@ -585,7 +585,7 @@ const Header = () => {
                 transition: `font-size 0.3s ${EASE_PREMIUM}`,
               }}
             >
-              PANA RABBIDS
+              PLEXIFYCAPS
             </span>
           </Link>
 

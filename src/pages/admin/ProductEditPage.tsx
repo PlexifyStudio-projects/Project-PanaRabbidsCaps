@@ -39,7 +39,7 @@ export default function ProductEditPage() {
   const [specBordado, setSpecBordado] = useState('3D de alta densidad');
   const [specVisera, setSpecVisera] = useState('Plana / Curva (segun modelo)');
   const [specOrigen, setSpecOrigen] = useState('Importada');
-  const [footerNote, setFooterNote] = useState('Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por Pana Rabbids.');
+  const [footerNote, setFooterNote] = useState('Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por PlexifyCaps.');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [dragOver, setDragOver] = useState(false);

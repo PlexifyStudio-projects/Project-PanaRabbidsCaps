@@ -2,10 +2,10 @@ import axios from 'axios';
 import type { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { ENV } from '../config/env';
 
-const AUTH_TOKEN_KEY = 'pana_rabbids_auth_token';
+const AUTH_TOKEN_KEY = 'plexify_caps_auth_token';
 
 /**
- * Axios instance pre-configured for the Pana Rabbids API.
+ * Axios instance pre-configured for the PlexifyCaps API.
  */
 const api: AxiosInstance = axios.create({
   baseURL: ENV.API_BASE_URL,

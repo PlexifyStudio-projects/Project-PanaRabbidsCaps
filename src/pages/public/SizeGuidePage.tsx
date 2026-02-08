@@ -72,7 +72,7 @@ const SizeGuidePage = () => {
     <>
       <SEOHead
         title="Gu\u00EDa de Tallas"
-        description="Encuentra tu talla perfecta de gorra. Gu\u00EDa de medidas y consejos para elegir la talla correcta en Pana Rabbids."
+        description="Encuentra tu talla perfecta de gorra. Gu\u00EDa de medidas y consejos para elegir la talla correcta en PlexifyCaps."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>

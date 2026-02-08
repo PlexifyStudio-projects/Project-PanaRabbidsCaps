@@ -8,7 +8,7 @@ import { useCart } from '../../hooks/useCart';
 import { formatCOP } from '../../utils/formatCurrency';
 
 /* ================================================================
-   PANA RABBIDS - ULTRA PREMIUM HOMEPAGE
+   PLEXIFYCAPS - ULTRA PREMIUM HOMEPAGE
    Colombian Luxury Streetwear Cap E-Commerce
    Dark luxury theme with glassmorphism, noise textures, gold accents
    ================================================================ */
@@ -256,7 +256,7 @@ const HomePage = () => {
     <>
       <SEOHead
         title="Inicio"
-        description="Pana Rabbids - Las gorras mas exclusivas de Colombia. Streetwear premium, gorras originales MLB, NFL, NBA y ediciones limitadas."
+        description="PlexifyCaps - Las gorras mas exclusivas de Colombia. Streetwear premium, gorras originales MLB, NFL, NBA y ediciones limitadas."
       />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -502,7 +502,7 @@ const HomePage = () => {
                   margin: 0,
                 }}
               >
-                CON PANA RABBIDS
+                CON PLEXIFYCAPS
               </motion.h1>
             </div>
 
@@ -711,7 +711,7 @@ const HomePage = () => {
               >
                 <img
                   src={featuredProducts[0] ? getPrimaryImage(featuredProducts[0]) : HERO_IMAGES.main}
-                  alt="Gorra premium Pana Rabbids"
+                  alt="Gorra premium PlexifyCaps"
                   style={{
                     width: '100%',
                     maxWidth: '420px',
@@ -2079,7 +2079,7 @@ const HomePage = () => {
         />
 
         <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <SectionHeading eyebrow="LIFESTYLE" title="SIGUENOS @PANARABBIDS" />
+          <SectionHeading eyebrow="LIFESTYLE" title="SIGUENOS @PLEXIFYCAPS" />
           <motion.p
             variants={fadeInUp}
             initial="hidden"
@@ -2387,7 +2387,7 @@ function InstagramCard({ imageUrl, isTall }: InstagramCardProps) {
             textTransform: 'uppercase',
           }}
         >
-          @PANARABBIDS
+          @PLEXIFYCAPS
         </span>
       </div>
 

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Customers Page (Admin)
+// PlexifyCaps - Customers Page (Admin)
 // View, search, filter and manage registered customers
 // ============================================================
 

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Settings Service
+// PlexifyCaps - Settings Service
 // Shared settings reader for the whole site
 // Reads from localStorage 'pana_settings', falls back to defaults
 // ============================================================
@@ -25,9 +25,9 @@ export interface StoreSettings {
 }
 
 const DEFAULTS: StoreSettings = {
-  storeName: 'Pana Rabbids',
+  storeName: 'PlexifyCaps',
   whatsapp: '573151573329',
-  email: 'info@panarabbids.com',
+  email: 'info@plexifycaps.com',
   freeShippingThreshold: '200000',
   shippingCost: '12000',
   wompiPublicKey: 'pub_prod_xxxxxxxxxxxxxxxxxx',
@@ -35,11 +35,11 @@ const DEFAULTS: StoreSettings = {
   sandboxMode: true,
   schedule: 'Lun - Sab, 9:00 AM - 6:00 PM',
   location: 'Bucaramanga, Colombia',
-  instagram: 'https://instagram.com/panarabbids',
-  tiktok: 'https://tiktok.com/@panarabbids',
-  facebook: 'https://facebook.com/panarabbids',
-  twitter: 'https://x.com/panarabbids',
-  productFooterNote: 'Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por Pana Rabbids.',
+  instagram: 'https://instagram.com/plexifycaps',
+  tiktok: 'https://tiktok.com/@plexifycaps',
+  facebook: 'https://facebook.com/plexifycaps',
+  twitter: 'https://x.com/plexifycaps',
+  productFooterNote: 'Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por PlexifyCaps.',
 };
 
 /** Load settings - usable from any component */

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Customer Detail Page (Admin)
+// PlexifyCaps - Customer Detail Page (Admin)
 // Edit customer info, reset password, toggle status
 // ============================================================
 

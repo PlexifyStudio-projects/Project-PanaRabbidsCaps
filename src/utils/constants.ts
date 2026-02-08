@@ -6,8 +6,8 @@ export const SHIPPING_COST = 12_000; // COP
 
 // ── Contact & Brand ─────────────────────────────────────────────────
 export const WHATSAPP_NUMBER = '573151573329';
-export const COMPANY_NAME = 'Pana Rabbids';
-export const COMPANY_EMAIL = 'info@panarabbids.com';
+export const COMPANY_NAME = 'PlexifyCaps';
+export const COMPANY_EMAIL = 'info@plexifycaps.com';
 
 // ── Cap Sizes ───────────────────────────────────────────────────────
 export const SIZES: string[] = [

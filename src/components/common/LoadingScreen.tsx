@@ -21,7 +21,7 @@ const LoadingScreen = ({ message }: LoadingScreenProps) => {
           animate={{ opacity: 1, letterSpacing: '0.15em' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          PANA RABBIDS
+          PLEXIFYCAPS
         </motion.h1>
 
         <div className="loading-screen__spinner">

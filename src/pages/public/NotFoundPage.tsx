@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - NotFoundPage (404)
+// PlexifyCaps - NotFoundPage (404)
 // Premium 404 page with featured products
 // All inline styles - no external CSS dependencies
 // ============================================================
@@ -17,7 +17,7 @@ const NotFoundPage = () => {
     <>
       <SEOHead
         title="404 - Pagina No Encontrada"
-        description="La pagina que buscas no existe. Vuelve al inicio de Pana Rabbids."
+        description="La pagina que buscas no existe. Vuelve al inicio de PlexifyCaps."
       />
 
       <div

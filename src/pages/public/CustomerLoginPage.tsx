@@ -93,7 +93,7 @@ const CustomerLoginPage = () => {
     <>
     <SEOHead
       title="Iniciar Sesión"
-      description="Inicia sesión en tu cuenta Pana Rabbids para ver tus pedidos, favoritos y más."
+      description="Inicia sesión en tu cuenta PlexifyCaps para ver tus pedidos, favoritos y más."
     />
     <div
       style={{
@@ -143,7 +143,7 @@ const CustomerLoginPage = () => {
             marginBottom: '32px',
           }}
         >
-          Accede a tu cuenta Pana Rabbids
+          Accede a tu cuenta PlexifyCaps
         </p>
 
         {error && (

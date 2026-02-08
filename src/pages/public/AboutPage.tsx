@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - AboutPage
+// PlexifyCaps - AboutPage
 // Premium about page with brand story, values, stats
 // All inline styles - no external CSS dependencies
 // ============================================================
@@ -101,7 +101,7 @@ const AboutPage = () => {
     <>
       <SEOHead
         title="Sobre Nosotros"
-        description="Conoce la historia de Pana Rabbids. Nacimos de la pasion por las gorras y la cultura urbana colombiana."
+        description="Conoce la historia de PlexifyCaps. Nacimos de la pasion por las gorras y la cultura urbana colombiana."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>
@@ -119,7 +119,7 @@ const AboutPage = () => {
         >
           <img
             src={HERO_IMAGES.brand}
-            alt="Pana Rabbids - Sobre Nosotros"
+            alt="PlexifyCaps - Sobre Nosotros"
             style={{
               position: 'absolute',
               top: 0,
@@ -243,7 +243,7 @@ const AboutPage = () => {
                 margin: '0 auto 24px auto',
               }}
             >
-              Pana Rabbids nacio en las calles de Bucaramanga, donde la moda urbana se mezcla con la identidad latina. Lo que empezo como una pasion por coleccionar gorras se convirtio en una mision: traer las mejores gorras del mundo a Colombia, con el estilo y la actitud que nos define.
+              PlexifyCaps nacio en las calles de Bucaramanga, donde la moda urbana se mezcla con la identidad latina. Lo que empezo como una pasion por coleccionar gorras se convirtio en una mision: traer las mejores gorras del mundo a Colombia, con el estilo y la actitud que nos define.
             </p>
             <p
               style={{
@@ -367,7 +367,7 @@ const AboutPage = () => {
                 margin: 0,
               }}
             >
-              Convertirnos en la referencia numero uno de gorras premium en Latinoamerica, siendo reconocidos por nuestra autenticidad, calidad y compromiso con la cultura streetwear. Queremos que cada persona que use una gorra Pana Rabbids sienta que lleva algo unico.
+              Convertirnos en la referencia numero uno de gorras premium en Latinoamerica, siendo reconocidos por nuestra autenticidad, calidad y compromiso con la cultura streetwear. Queremos que cada persona que use una gorra PlexifyCaps sienta que lleva algo unico.
             </p>
           </motion.div>
         </div>
@@ -562,7 +562,7 @@ const AboutPage = () => {
         >
           <img
             src={HERO_IMAGES.workshop}
-            alt="Taller Pana Rabbids"
+            alt="Taller PlexifyCaps"
             style={{
               width: '100%',
               height: '100%',

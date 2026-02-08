@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - CartPage (Enhanced)
+// PlexifyCaps - CartPage (Enhanced)
 // Full-page cart with premium dark theme, gold accents,
 // glassmorphism order summary, animated shipping bar
 // All inline styles - no external CSS dependencies
@@ -71,7 +71,7 @@ const CartPage = () => {
     <>
       <SEOHead
         title="Tu Carrito"
-        description="Revisa los productos en tu carrito de compras en Pana Rabbids."
+        description="Revisa los productos en tu carrito de compras en PlexifyCaps."
       />
 
       <div

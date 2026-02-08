@@ -65,7 +65,7 @@ export function buildOrderStatusWhatsApp(order: Order, newStatus: OrderStatus): 
     `Hola ${order.customerName},`,
     `Tu pedido #${order.referenceCode} ahora está: ${statusLabel}`,
     order.trackingCode ? `Rastreo: ${order.trackingCode}` : '',
-    'Pana Rabbids',
+    'PlexifyCaps',
   ]
     .filter(Boolean)
     .join('\n');
@@ -75,7 +75,7 @@ export function buildStockAlertWhatsApp(subscription: StockSubscription): string
   return [
     `Hola! ${subscription.productName} (${subscription.variantLabel}) ya está disponible.`,
     'Corre antes de que se agote.',
-    'Pana Rabbids',
+    'PlexifyCaps',
   ].join('\n');
 }
 

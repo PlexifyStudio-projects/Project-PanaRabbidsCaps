@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Stock Page (Simple & Clean)
+// PlexifyCaps - Stock Page (Simple & Clean)
 // Visual stock management with product cards and +/- buttons
 // Persists stock changes to localStorage
 // ============================================================

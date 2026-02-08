@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Premium Footer Component (v2 Rewrite)
+// PlexifyCaps - Premium Footer Component (v2 Rewrite)
 // Newsletter + 4-column layout + Trust strip + Payment methods + Copyright
 // Visually alive dark theme with gold accents & dynamic settings
 // ============================================================

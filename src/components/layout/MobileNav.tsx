@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - MobileNav Component
+// PlexifyCaps - MobileNav Component
 // Full-screen slide-from-left overlay menu for mobile
 // Includes navigation links, expandable categories, socials
 // ============================================================
@@ -264,7 +264,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
             {/* Header */}
             <div className="mobile-nav__header" style={styles.header}>
               <Link to={PUBLIC_ROUTES.HOME} style={styles.logo} onClick={onClose}>
-                PANA RABBIDS
+                PLEXIFYCAPS
               </Link>
               <button
                 style={styles.closeButton}
@@ -481,7 +481,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
               <p style={styles.socialTitle}>Siguenos</p>
               <div style={styles.socialLinks}>
                 <a
-                  href="https://instagram.com/panarabbids"
+                  href="https://instagram.com/plexifycaps"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.socialLink}
@@ -489,7 +489,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
                   Instagram
                 </a>
                 <a
-                  href="https://tiktok.com/@panarabbids"
+                  href="https://tiktok.com/@plexifycaps"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.socialLink}
@@ -497,7 +497,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
                   TikTok
                 </a>
                 <a
-                  href="https://facebook.com/panarabbids"
+                  href="https://facebook.com/plexifycaps"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.socialLink}

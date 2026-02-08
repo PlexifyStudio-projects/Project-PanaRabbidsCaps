@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Layout Components Barrel Export
+// PlexifyCaps - Layout Components Barrel Export
 // Re-exports all layout components for clean imports
 // ============================================================
 

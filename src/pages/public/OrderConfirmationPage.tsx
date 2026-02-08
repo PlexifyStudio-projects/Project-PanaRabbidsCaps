@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - OrderConfirmationPage
+// PlexifyCaps - OrderConfirmationPage
 // Success page with real order details from localStorage
 // ============================================================
 

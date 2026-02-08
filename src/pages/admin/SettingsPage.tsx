@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Settings Page
+// PlexifyCaps - Settings Page
 // All settings persist to localStorage and reflect across the site
 // ============================================================
 
@@ -185,7 +185,7 @@ export default function SettingsPage() {
         <div>
           <label style={labelStyle}>Nota al pie (aparece debajo de la descripci&oacute;n)</label>
           <textarea
-            value={settings.productFooterNote || 'Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por Pana Rabbids.'}
+            value={settings.productFooterNote || 'Todas nuestras gorras vienen con certificado de autenticidad y empaque premium. Calidad garantizada por PlexifyCaps.'}
             onChange={(e) => updateField('productFooterNote', e.target.value)}
             onFocus={(e: any) => { e.target.style.borderColor = 'rgba(196,163,90,0.4)'; }}
             onBlur={(e: any) => { e.target.style.borderColor = 'rgba(250,250,250,0.08)'; }}

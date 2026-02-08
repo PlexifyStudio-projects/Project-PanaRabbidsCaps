@@ -59,7 +59,7 @@ export function buildOrderConfirmationEmail(order: Order): {
     .join('\n');
 
   return {
-    subject: `Confirmación de pedido #${order.referenceCode} - Pana Rabbids`,
+    subject: `Confirmación de pedido #${order.referenceCode} - PlexifyCaps`,
     body: [
       `Hola ${order.customerName},`,
       '',
@@ -77,7 +77,7 @@ export function buildOrderConfirmationEmail(order: Order): {
       'Te notificaremos cuando tu pedido cambie de estado.',
       '',
       'Gracias por tu compra,',
-      'Pana Rabbids',
+      'PlexifyCaps',
     ].join('\n'),
   };
 }
@@ -120,7 +120,7 @@ export function buildOrderStatusEmail(
       'Puedes revisar el estado de tu pedido en nuestra página de rastreo.',
       '',
       'Gracias,',
-      'Pana Rabbids',
+      'PlexifyCaps',
     ]
       .filter(Boolean)
       .join('\n'),
@@ -132,7 +132,7 @@ export function buildStockAlertEmail(
   _product: Product
 ): { subject: string; body: string } {
   return {
-    subject: `${subscription.productName} ya está disponible — Pana Rabbids`,
+    subject: `${subscription.productName} ya está disponible — PlexifyCaps`,
     body: [
       `Hola,`,
       '',
@@ -142,7 +142,7 @@ export function buildStockAlertEmail(
       '',
       'Corre antes de que se agote.',
       '',
-      'Pana Rabbids',
+      'PlexifyCaps',
     ].join('\n'),
   };
 }

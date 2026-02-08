@@ -18,7 +18,7 @@ export const ENV = {
   WHATSAPP_NUMBER: import.meta.env.VITE_WHATSAPP_NUMBER || '573151573329',
 
   /** Application name */
-  APP_NAME: import.meta.env.VITE_APP_NAME || 'Pana Rabbids',
+  APP_NAME: import.meta.env.VITE_APP_NAME || 'PlexifyCaps',
 
   /** Whether we are in development mode */
   IS_DEV: import.meta.env.DEV,

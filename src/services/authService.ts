@@ -2,22 +2,22 @@ import type { AdminUser, LoginCredentials } from '../types/user';
 import { AUTH_TOKEN_KEY } from './api';
 
 // ── Local credentials (temporary until backend is ready) ────────────
-const LOCAL_ADMIN_EMAIL = 'admin@panarabbids.com';
+const LOCAL_ADMIN_EMAIL = 'admin@plexifycaps.com';
 const LOCAL_ADMIN_PASSWORD = 'Admin1!';
 
-const ADMIN_USER_KEY = 'pana_rabbids_admin_user';
+const ADMIN_USER_KEY = 'plexify_caps_admin_user';
 
 // Mock admin user returned on successful local login
 const MOCK_ADMIN_USER: AdminUser = {
   id: 1,
   username: 'admin',
-  email: 'admin@panarabbids.com',
+  email: 'admin@plexifycaps.com',
   isActive: true,
   lastLogin: new Date().toISOString(),
 };
 
 // Mock JWT token (not a real JWT, just a placeholder)
-const MOCK_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.MOCK_PANA_RABBIDS_ADMIN_TOKEN';
+const MOCK_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.MOCK_PLEXIFY_CAPS_ADMIN_TOKEN';
 
 /**
  * Authenticate with username and password.

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - CheckoutPage (Enhanced)
+// PlexifyCaps - CheckoutPage (Enhanced)
 // Multi-step checkout with Wompi payment simulation,
 // glassmorphism, step indicator, premium form inputs
 // All inline styles - no external CSS dependencies
@@ -420,7 +420,7 @@ const CheckoutPage = () => {
     <>
       <SEOHead
         title="Checkout"
-        description="Completa tu pedido en Pana Rabbids. Envio a toda Colombia."
+        description="Completa tu pedido en PlexifyCaps. Envio a toda Colombia."
       />
 
       <div

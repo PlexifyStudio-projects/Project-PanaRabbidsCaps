@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Products Page (Admin)
+// PlexifyCaps - Products Page (Admin)
 // Grouped by category, inline image editing via URL,
 // all changes persist to localStorage
 // ============================================================

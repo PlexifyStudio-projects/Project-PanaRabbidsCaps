@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - CatalogPage
+// PlexifyCaps - CatalogPage
 // Premium luxury catalog with advanced filtering, sorting,
 // search, responsive grid/list views, hero banner, glass morphism
 // All inline styles - no external SCSS dependency

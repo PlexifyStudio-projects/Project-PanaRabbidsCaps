@@ -118,7 +118,7 @@ const ShippingPage = () => {
     <>
       <SEOHead
         title="Env\u00EDos y Devoluciones"
-        description="Informaci\u00F3n sobre env\u00EDos, tiempos de entrega, costos y pol\u00EDtica de devoluciones en Pana Rabbids."
+        description="Informaci\u00F3n sobre env\u00EDos, tiempos de entrega, costos y pol\u00EDtica de devoluciones en PlexifyCaps."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D' }}>

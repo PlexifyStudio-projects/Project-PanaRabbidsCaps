@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Product Data Service
+// PlexifyCaps - Product Data Service
 // Central data layer: localStorage overrides + mock defaults
 // Admin changes images/data → persists → public pages see it
 // ============================================================

@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - Layout Component
+// PlexifyCaps - Layout Component
 // Main layout wrapper for all public-facing pages
 // Includes: AnnouncementBar, Header, Content, Footer,
 //           WhatsApp button, and scroll-to-top
@@ -106,7 +106,7 @@ const BackToTop = () => {
 const WhatsAppButton = () => {
   const WHATSAPP_NUMBER = '573151573329';
   const WHATSAPP_MESSAGE = encodeURIComponent(
-    'Hola! Estoy interesado en los productos de Pana Rabbids.'
+    'Hola! Estoy interesado en los productos de PlexifyCaps.'
   );
 
   return (

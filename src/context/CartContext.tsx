@@ -4,7 +4,7 @@ import type { CartItem, CartAction } from '../types/cart';
 import { FREE_SHIPPING_THRESHOLD as DEFAULT_THRESHOLD, SHIPPING_COST as DEFAULT_COST } from '../utils/constants';
 
 // ── Storage key ─────────────────────────────────────────────────────
-const CART_STORAGE_KEY = 'pana_rabbids_cart';
+const CART_STORAGE_KEY = 'plexify_caps_cart';
 
 // Read shipping config from admin settings (localStorage), fall back to constants
 function getShippingConfig() {

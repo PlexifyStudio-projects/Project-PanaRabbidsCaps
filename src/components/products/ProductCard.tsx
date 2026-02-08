@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - ProductCard Component
+// PlexifyCaps - ProductCard Component
 // Ultra-premium product card with dual-image hover swap,
 // gold gradient pricing, glass morphism, animated badges,
 // quick-add spring animation, and low-stock urgency
@@ -134,7 +134,7 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
             {imgError ? (
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', background: 'linear-gradient(145deg, #1A1A2E 0%, #0D0D0D 60%, #1A1A2E 100%)' }}>
                 <CapSilhouette />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '10px', fontWeight: 600, color: 'rgba(196, 163, 90, 0.2)', letterSpacing: '2px', textTransform: 'uppercase' }}>PANA RABBIDS</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: '10px', fontWeight: 600, color: 'rgba(196, 163, 90, 0.2)', letterSpacing: '2px', textTransform: 'uppercase' }}>PLEXIFYCAPS</span>
               </div>
             ) : (
               <>

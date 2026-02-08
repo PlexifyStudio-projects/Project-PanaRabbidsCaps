@@ -1,5 +1,5 @@
 // ============================================================
-// Pana Rabbids - TrackingPage
+// PlexifyCaps - TrackingPage
 // Order tracking with lookup by code, email, name, or cedula
 // Visual timeline with real order data from localStorage
 // ============================================================
@@ -266,7 +266,7 @@ const TrackingPage = () => {
     <>
       <SEOHead
         title="Rastrear Pedido"
-        description="Rastrea tu pedido de Pana Rabbids en tiempo real."
+        description="Rastrea tu pedido de PlexifyCaps en tiempo real."
       />
 
       <div style={{ minHeight: '100vh', background: '#0D0D0D', paddingTop: '40px', paddingBottom: '80px', position: 'relative' }}>

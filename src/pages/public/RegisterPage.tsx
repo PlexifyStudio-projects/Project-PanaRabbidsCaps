@@ -113,7 +113,7 @@ const RegisterPage = () => {
     <>
     <SEOHead
       title="Crear Cuenta"
-      description="Regístrate en Pana Rabbids y accede a gorras premium exclusivas. Envío gratis en Colombia."
+      description="Regístrate en PlexifyCaps y accede a gorras premium exclusivas. Envío gratis en Colombia."
     />
     <div
       style={{
@@ -163,7 +163,7 @@ const RegisterPage = () => {
             marginBottom: '28px',
           }}
         >
-          Únete a Pana Rabbids
+          Únete a PlexifyCaps
         </p>
 
         {displayError && (

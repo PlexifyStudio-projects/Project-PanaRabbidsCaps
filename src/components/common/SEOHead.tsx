@@ -8,7 +8,7 @@ interface SEOHeadProps {
   type?: 'website' | 'product' | 'article';
 }
 
-const SITE_NAME = 'Pana Rabbids';
+const SITE_NAME = 'PlexifyCaps';
 const DEFAULT_DESCRIPTION =
   'Streetwear premium venezolano. Ropa urbana con actitud, estilo y esencia latina.';
 const DEFAULT_IMAGE = '/og-image.jpg';
