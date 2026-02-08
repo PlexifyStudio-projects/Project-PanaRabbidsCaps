@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Project-PlexifyCaps/',
+  base: '/Project-PanaRabbidsCaps/',
   server: {
     port: 5180,
     host: true,
